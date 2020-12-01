@@ -2,7 +2,7 @@
 
 You are a happy factory worker. Go to work and regulate pipes while the grateful guards watch over you. And don't forget to eat your delicious sandwiches! Who knows what horrors you might encounter if you don't...
 
-![retrace screenshot](https://github.com/incredibleLeitman/ReTrace/screenshot.png "ReTrace Screenshot")
+![retrace screenshot](https://github.com/incredibleLeitman/ReTrace/blob/main/screenshot.png "ReTrace Screenshot")
 
 ## Controls
 - standard fps: walk with WASD, look around with mouse

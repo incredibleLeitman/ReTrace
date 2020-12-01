@@ -1,12 +1,6 @@
 # ReTrace
 You are a happy factory worker. Go to work and regulate pipes while the grateful guards watch over you. And don't forget to eat your delicious sandwiches! Who knows what horrors you might encounter if you don't...
 
-Source: https://gitlab.hexaquo.at/mga/retrace
-
-Windows build: https://gitlab.hexaquo.at/mga/retrace/uploads/868bba5510632ca480783c55406cd57c/Retrace_Windows.zip
-
-Linux build: https://gitlab.hexaquo.at/mga/retrace/uploads/f45247a73ba39405ee7b29e5642df9fa/Retrace_Linux.tar.xz
-
 ## Group Members
 - Bittner Karl, if17b005
 - Leithner Michael, if17b051

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/meldewesen-restricted-area.wav-af0568653214f4c8f1b9fc588246bfaf.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/meldewesen-restricted-area.wav"
+dest_files=[ "res://.import/meldewesen-restricted-area.wav-af0568653214f4c8f1b9fc588246bfaf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

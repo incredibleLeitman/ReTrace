@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Characters/Player/UI/UI.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Fonts/MainFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Resources/Textures/pillLevel_fill.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Textures/daytimeUI.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Textures/crosshair.png" type="Texture" id=5]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.2837
+margin_right = 10.2837
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PressInteract" type="Label" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -104.0
+margin_top = -58.8594
+margin_right = 104.0
+margin_bottom = -34.8594
+custom_fonts/font = ExtResource( 2 )
+text = "Press 'E' to interact"
+
+[node name="Info" type="Label" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -460.0
+margin_top = 162.0
+margin_right = 460.0
+margin_bottom = 186.0
+custom_fonts/font = ExtResource( 2 )
+text = "this is a very long text. just needed to be able to center it at the beginning of the game"
+align = 1
+
+[node name="labelHealth" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -790.869
+margin_top = -402.863
+margin_right = -640.869
+margin_bottom = -378.863
+custom_fonts/font = ExtResource( 2 )
+text = "Health"
+
+[node name="InventoryContainer" type="GridContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -146.0
+margin_top = -258.5
+margin_right = -7.0
+margin_bottom = 258.5
+
+[node name="PillLevel" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="PillProgress" type="TextureProgress" parent="."]
+margin_left = -0.571533
+margin_top = 9.7845
+margin_right = 247.428
+margin_bottom = 49.7845
+max_value = 7.0
+step = 0.1
+value = 6.0
+texture_progress = ExtResource( 3 )
+
+[node name="DayTime" type="Label" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -170.14
+margin_top = 7.36639
+margin_right = -130.14
+margin_bottom = 21.3664
+
+[node name="DayTimeProgress" type="ProgressBar" parent="."]
+visible = false
+margin_left = 850.901
+margin_top = 30.7722
+margin_right = 988.901
+margin_bottom = 44.7722
+rect_pivot_offset = Vector2( 67.8153, 7.2278 )
+
+[node name="DayTimeVisual" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -245.0
+margin_top = -90.0
+margin_right = -65.0
+margin_bottom = 90.0
+rect_rotation = 180.0
+rect_pivot_offset = Vector2( 90, 90 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+
+[node name="CrossHair" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="Circle" type="TextureRect" parent="CrossHair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 4

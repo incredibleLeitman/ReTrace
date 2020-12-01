@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/inactive.wav-e8c09df3ca5d758dc631b5c90a37fd8c.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/FactoryMusic/inactive.wav"
+dest_files=[ "res://.import/inactive.wav-e8c09df3ca5d758dc631b5c90a37fd8c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

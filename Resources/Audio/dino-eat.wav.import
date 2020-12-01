@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dino-eat.wav-1c02eb9853b763034b31d57fdabb6775.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/dino-eat.wav"
+dest_files=[ "res://.import/dino-eat.wav-1c02eb9853b763034b31d57fdabb6775.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

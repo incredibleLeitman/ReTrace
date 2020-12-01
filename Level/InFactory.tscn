@@ -1,0 +1,2226 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://Level/Interactables/Key/Key.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Level/Interactables/Keycard/Keycard2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Util/PathNavigatorForNPC.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/Meldewesen/Meldewesen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Level/Buildings/DoubleDoorWall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Materials/Blue_Walls.tres" type="Material" id=6]
+[ext_resource path="res://Level/Buildings/DoorWall.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Level/Decoration/TreeTentacle.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Materials/Happy_Walls.tres" type="Material" id=9]
+[ext_resource path="res://Materials/Sad_Walls.tres" type="Material" id=10]
+[ext_resource path="res://Level/Interactables/Door/Door.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Characters/Worker/Worker.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Level/Interactables/FactoryMachines/FactoryGameplay.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Level/Decoration/Statue.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Level/Interactables/Lever/Lever.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Level/Interactables/Pipes/EckiPipe.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Level/Interactables/Pipes/StraightPipe.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Level/Interactables/Pipes/StraightForkPipe.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Util/NodeGroupNotifier.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Level/FactoryMusicHandler.gd" type="Script" id=21]
+[ext_resource path="res://Resources/Audio/FactoryMusic/inactive.wav" type="AudioStream" id=22]
+[ext_resource path="res://Resources/Audio/FactoryMusic/active.wav" type="AudioStream" id=23]
+[ext_resource path="res://Level/Decoration/FactorySpotlight.tscn" type="PackedScene" id=24]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -12.8524, 3.8147e-006, -38.2626, 0, 0, 0, 0, 0, 0, -3.86188, 3.8147e-006, -38.1403, 0, 0, 0, 0, 0, 0, 2.29262, 7.62939e-006, -58.2428, 0, 0, 0, 0, 0, 0, -12.5812, 7.62939e-006, -61.4075, 0, 0, 0, 0, 0, 0, -0.555558, 7.62939e-006, -54.6035, 0, 0, 0, 0, 0, 0, -5.38164, 7.62939e-006, -52.3091, 0, 0, 0, 0, 0, 0, -0.634673, 7.62939e-006, -42.024, 0, 0, 0, 0, 0, 0, -6.96396, 7.62939e-006, -44.0811, 0, 0, 0, 0, 0, 0, -6.09368, 7.62939e-006, -39.7297 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=2]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 64.9355, 0, -30.2732, 0, 0, 0, 0, 0, 0, 47.846, 0, -29.9852, 0, 0, 0, 0, 0, 0, 48.2084, 0, -69.7311, 0, 0, 0, 0, 0, 0, 48.2171, 0, -70.6841, 0, 0, 0, 0, 0, 0, -17.7547, 0, -70.7086, 0, 0, 0, 0, 0, 0, -17.5626, 0, -75.7011, 0, 0, 0, 0, 0, 0, -16.4105, 0, -72.3408, 0, 0, 0, 0, 0, 0, 49.8094, 0, -70.3946, 0, 0, 0, 0, 0, 0, 46.2245, 0, -30.1882, 0, 0, 0, 0, 0, 0, 65.0422, 0, -28.5561 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=3]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 27.8761, 0, -13.4702, 0, 0, 0, 0, 0, 0, 27.928, 0, -19.0722, 0, 0, 0, 0, 0, 0, 41.0512, 0, -19.3834, 0, 0, 0, 0, 0, 0, 40.5325, 0, -10.9285, 0, 0, 0, 0, 0, 0, 31.2477, 0, -11.2397, 0, 0, 0, 0, 0, 0, 27.5836, 0, -30.7129, 0, 0, 0, 0, 0, 0, 34.1106, 0, -30.3399, 0, 0, 0, 0, 0, 0, 40.023, 0, -30.0021, 0, 0, 0, 0, 0, 0, 33.6256, 0, -32.3122, 0, 0, 0, 0, 0, 0, 34.1324, 0, -46.6103, 0, 0, 0, 0, 0, 0, 39.6171, 0, -46.4579, 0, 0, 0, 0, 0, 0, 39.7718, 0, -62.8133, 0, 0, 0, 0, 0, 0, 29.3379, 0, -62.2493, 0, 0, 0, 0, 0, 0, 28.4824, 0, -47.383, 0, 0, 0, 0, 0, 0, 34.3467, 0, -49.5155, 0, 0, 0, 0, 0, 0, 33.9445, 0, -28.7592 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="NavigationMesh" id=4]
+vertices = PoolVector3Array( -88.27, 0.4, -99.31, -99.31, 0.4, -99.31, -99.31, 0.4, -91.95, -88.27, 0.4, -99.31, -99.31, 0.4, -91.95, -99.31, 0.4, -84.36, -88.27, 0.4, -99.31, -99.31, 0.4, -84.36, -99.31, 0.4, -76.77, -77, 0.4, -99.31, -88.27, 0.4, -99.31, -99.31, 0.4, -76.77, -99.31, 0.4, -69.18, -11.22, 0.4, -38.82, -43.42, 0.4, -99.31, -54.46, 0.4, -99.31, -77, 0.4, -99.31, -99.31, 0.4, -69.18, -99.31, 0.4, -61.82, -77, 0.4, -99.31, -99.31, 0.4, -61.82, -99.31, 0.4, -54.23, -65.73, 0.4, -99.31, -77, 0.4, -99.31, -99.31, 0.4, -54.23, -99.31, 0.4, -46.64, -11.22, 0.4, -40.2, -10.07, 0.4, -40.66, -9.61, 0.4, -99.31, -20.88, 0.4, -99.31, -65.73, 0.4, -99.31, -99.31, 0.4, -46.64, -99.31, 0.4, -39.05, -11.22, 0.4, -38.82, -54.46, 0.4, -99.31, -11.22, 0.4, -38.82, -11.22, 0.4, -40.2, -20.88, 0.4, -99.31, -32.15, 0.4, -99.31, -11.22, 0.4, -38.82, -32.15, 0.4, -99.31, -43.42, 0.4, -99.31, -8, 0.4, -40.66, -8, 0.4, -99.31, -9.61, 0.4, -99.31, -10.07, 0.4, -40.66, -5.7, 0.4, -39.97, -5.7, 0.4, -37.9, 4.65, 0.4, -37.9, -6.16, 0.4, -40.43, -5.7, 0.4, -39.97, 4.65, 0.4, -37.9, 15.23, 0.4, -37.9, 36.16, 0.4, -37.9, 36.39, 0.4, -99.31, 25.12, 0.4, -99.31, -8, 0.4, -40.66, -6.16, 0.4, -40.43, 15.23, 0.4, -37.9, 25.58, 0.4, -37.9, 14.08, 0.4, -99.31, 3.04, 0.4, -99.31, -8, 0.4, -40.66, -8, 0.4, -40.66, 25.58, 0.4, -37.9, 36.16, 0.4, -37.9, 25.12, 0.4, -99.31, 14.08, 0.4, -99.31, 3.04, 0.4, -99.31, -8, 0.4, -99.31, -8, 0.4, -40.66, 99.41, 0.4, -91.72, 99.41, 0.4, -99.31, 91.36, 0.4, -99.31, 99.41, 0.4, -83.9, 99.41, 0.4, -91.72, 91.36, 0.4, -99.31, 99.41, 0.4, -83.9, 91.36, 0.4, -99.31, 83.54, 0.4, -99.31, 99.41, 0.4, -76.08, 36.39, 0.4, -99.31, 36.16, 0.4, -37.9, 37.54, 0.4, -37.9, 44.21, 0.4, -99.31, 99.41, 0.4, -76.08, 83.54, 0.4, -99.31, 75.72, 0.4, -99.31, 99.41, 0.4, -68.26, 52.03, 0.4, -99.31, 44.21, 0.4, -99.31, 37.54, 0.4, -37.9, 99.41, 0.4, -68.26, 75.72, 0.4, -99.31, 67.9, 0.4, -99.31, 99.41, 0.4, -60.44, 37.54, 0.4, -37.9, 38, 0.4, -36.98, 99.41, 0.4, -36.98, 99.41, 0.4, -44.8, 99.41, 0.4, -60.44, 67.9, 0.4, -99.31, 59.85, 0.4, -99.31, 99.41, 0.4, -52.62, 37.54, 0.4, -37.9, 99.41, 0.4, -44.8, 99.41, 0.4, -52.62, 59.85, 0.4, -99.31, 52.03, 0.4, -99.31, 10.86, 4.4, -34.91, 11.09, 4.4, -39.28, 0.510002, 4.4, -39.28, 0.510002, 4.4, -34.91, -9.84, 4.4, -34.91, 0.510002, 4.4, -34.91, 0.510002, 4.4, -39.28, -9.84, 4.4, -39.28, 11.09, 4.4, -39.28, 10.86, 4.4, -34.91, 12.24, 4.4, -34.91, 11.09, 4.4, -39.28, 12.24, 4.4, -34.91, 12.7, 4.4, -34.45, 19.37, 4.4, -36.98, 19.37, 4.4, -39.28, 35.47, 4.4, -28.7, 27.65, 4.4, -36.52, 19.83, 4.4, -36.52, 19.83, 4.4, -36.52, 12.7, 4.4, -26.86, 12.7, 4.4, -19.27, 23.74, 4.4, -4.55, 35.47, 4.4, -20.65, 35.47, 4.4, -28.7, 19.83, 4.4, -36.52, 19.37, 4.4, -36.98, 12.7, 4.4, -34.45, 12.7, 4.4, -26.86, 35.47, 4.4, -28.7, 35.47, 4.4, -36.52, 27.65, 4.4, -36.52, 23.74, 4.4, -4.55, 35.47, 4.4, -12.6, 35.47, 4.4, -20.65, 12.24, 4.4, -12.14, 12.24, 4.4, -4.55, 23.74, 4.4, -4.55, 12.7, 4.4, -19.27, 23.74, 4.4, -4.55, 35.47, 4.4, -4.55, 35.47, 4.4, -12.6, -12.37, 0.4, -34.91, -11.22, 0.4, -34.91, -11.22, 0.4, -38.82, -12.83, 0.4, -34.45, -12.37, 0.4, -34.91, -11.22, 0.4, -38.82, -99.31, 0.4, -39.05, -99.31, 0.4, -32.61, -99.31, 0.4, -32.61, -12.83, 0.4, -32.61, -12.83, 0.4, -34.45, -7.77, 0.4, -36.29, -7.77, 0.4, -38.36, -9.38, 0.4, -38.36, -9.38, 0.4, -34.91, 20.98, 0.4, -34.91, 21.21, 0.4, -35.83, 14.08, 0.4, -35.83, 13.39, 0.4, -34.91, -7.31, 0.4, -35.83, -7.77, 0.4, -36.29, -9.38, 0.4, -34.91, -7.31, 0.4, -35.83, -9.38, 0.4, -34.91, -1.79, 0.4, -34.91, -0.18, 0.4, -35.83, 6.95, 0.4, -35.83, 5.8, 0.4, -34.91, 13.39, 0.4, -34.91, 14.08, 0.4, -35.83, -0.18, 0.4, -35.83, -1.79, 0.4, -34.91, 5.8, 0.4, -34.91, 6.95, 0.4, -35.83, 37.54, 0.4, -35.83, 36.85, 0.4, -35.83, 36.85, 0.4, -28.24, 36.85, 0.4, -13.06, 36.85, 0.4, -5.24, 39.15, 0.4, -5.24, 38, 0.4, -36.98, 37.54, 0.4, -35.83, 36.85, 0.4, -28.24, 36.85, 0.4, -20.65, 36.85, 0.4, -13.06, 39.15, 0.4, -5.24, 39.61, 0.4, -4.09, 99.41, 0.4, -28.93, 99.41, 0.4, -36.98, 38, 0.4, -36.98, 36.85, 0.4, -20.65, 36.85, 0.4, -13.06, 39.61, 0.4, -4.09, 99.41, 0.4, -20.65, 99.41, 0.4, -28.93, 38, 0.4, -36.98, 39.61, 0.4, -4.09, 99.41, 0.4, -12.37, 99.41, 0.4, -20.65, 39.61, 0.4, -4.09, 99.41, 0.4, -4.09, 99.41, 0.4, -12.37, 26.27, 0.4, -34.91, 26.27, 0.4, -35.14, 25.58, 0.4, -35.14, 25.12, 0.4, -34.45, 25.12, 0.4, -27.55, 22.82, 0.4, -31.23, 22.82, 0.4, -23.64, 25.12, 0.4, -20.65, 25.12, 0.4, -34.45, 25.58, 0.4, -35.14, 25.12, 0.4, -35.83, 22.36, 0.4, -34.91, 22.82, 0.4, -34.45, 22.82, 0.4, -32.61, 21.67, 0.4, -32.15, 21.67, 0.4, -31.69, 22.82, 0.4, -31.23, 22.82, 0.4, -23.64, 22.82, 0.4, -15.82, 25.12, 0.4, -19.27, 25.12, 0.4, -20.65, 25.12, 0.4, -19.27, 26.27, 0.4, -19.73, 26.27, 0.4, -20.19, 25.12, 0.4, -20.65, 22.82, 0.4, -15.82, 25.12, 0.4, -15.82, 25.12, 0.4, -19.27, 21.21, 0.4, -35.83, 20.98, 0.4, -34.91, 22.36, 0.4, -34.91, 25.12, 0.4, -35.83, 25.12, 0.4, -34.45, 22.82, 0.4, -32.61, 22.82, 0.4, -31.23, 25.12, 0.4, -27.55, 25.12, 0.4, -34.45, 22.82, 0.4, -34.45, 22.82, 0.4, -32.61, 26.27, 0.4, -35.14, 26.27, 0.4, -34.91, 27.19, 0.4, -34.45, 34.78, 0.4, -35.83, 27.19, 0.4, -35.83, 26.27, 0.4, -20.19, 26.27, 0.4, -19.73, 26.96, 0.4, -19.27, 34.78, 0.4, -19.27, 27.19, 0.4, -20.65, 27.19, 0.4, -20.65, 34.78, 0.4, -19.27, 34.78, 0.4, -27.55, 27.19, 0.4, -27.55, 34.78, 0.4, -27.55, 34.78, 0.4, -35.83, 27.19, 0.4, -34.45, 27.19, 0.4, -27.55, -0.18, 8.8, -33.53, -11.45, 8.8, -33.53, -11.45, 8.8, -25.94, -0.18, 8.8, -18.12, 11.32, 8.8, -18.12, 11.32, 8.8, -25.94, -11.45, 8.8, -25.94, -11.45, 8.8, -18.12, -0.18, 8.8, -18.12, 11.32, 8.8, -25.94, 11.32, 8.8, -33.53, -0.18, 8.8, -33.53, -9.38, 0.4, -21.34, -10.76, 0.4, -21.34, -10.3, 0.4, -20.65, -8.46, 0.4, -20.42, 1.89, 0.4, -31.92, -2.02, 0.4, -31.92, -3.4, 0.4, -24.79, 1.2, 0.4, -18.81, 10.86, 0.4, -18.81, 8.56001, 0.8, -25.02, 7.60715, 0.4, -26.0057, 9.02, 0.4, -23.778, -4.09, 0.4, -25.94, -4.55, 0.4, -25.48, -3.4, 0.4, -24.79, -8.92, 0.4, -21.8, -9.38, 0.4, -21.34, -8.46, 0.4, -20.42, -2.02, 0.4, -31.92, -2.48, 0.4, -32.38, -3.4, 0.4, -31.46, -4.09, 0.4, -27.09, -4.09, 0.4, -25.94, -3.4, 0.4, -24.79, -6.39, 0.4, -25.02, -7.31, 0.4, -26.17, -7.31, 0.4, -23.87, -6.39, 0.4, -23.41, 8.56001, 0.8, -26.63, 2.81001, 0.4, -32.15, 1.89, 0.4, -31.92, 8.56001, 0.8, -25.02, 7.60167, 0.4, -27.55, 7.60715, 0.4, -26.0057, -4.32, 0.4, -31.46, -5.00999, 0.4, -32.15, -5.93, 0.4, -31.46, -5.93, 0.4, -31.46, -7.54, 0.4, -31.92, -7.54, 0.4, -31, -4.09, 0.4, -22.72, -5.00999, 0.4, -22.72, -4.55, 0.4, -20.88, -8, 0.4, -21.11, -8.92, 0.4, -21.8, -8.46, 0.4, -20.42, -8, 0.4, -19.96, -6.85, 0.4, -20.19, -10.53, 0.4, -30.77, -10.3, 0.4, -32.84, -10.76, 0.4, -32.84, -8, 0.4, -21.8, -6.39, 0.4, -23.41, -7.31, 0.4, -23.87, -8.92, 0.4, -22.95, -8.92, 0.4, -21.8, 10.86, 0.4, -18.81, 10.4, 0.8, -24.56, 9.02, 0.8, -24.56, 9.388, 0.4, -23.41, 10.492, 0.4, -23.41, -3.4, 0.4, -31.46, -4.32, 0.4, -31.46, -4.78, 0.4, -27.78, -4.09, 0.4, -27.09, -8, 0.4, -21.11, -8, 0.4, -21.8, -8.92, 0.4, -21.8, 10.4, 0.8, -27.09, 10.86, 0.8, -26.63, 10.86, 0.4, -32.84, 10.492, 0.4, -28.24, 10.86, 0.4, -18.81, 9.02, 0.8, -24.56, 8.56001, 0.8, -25.02, 9.02, 0.4, -23.778, 9.388, 0.4, -23.41, -6.85, 0.4, -20.19, -8, 0.4, -19.96, -8, 0.4, -18.81, 1.2, 0.4, -18.81, -5.24, 0.4, -20.19, -8.92, 0.4, -28.01, -7.54, 0.4, -26.4, -6.62, 0.4, -27.78, -8.46, 0.4, -29.85, -9.61, 0.4, -29.85, -3.4, 0.4, -24.79, -3.4, 0.4, -23.41, 1.2, 0.4, -18.81, -3.4, 0.4, -23.41, -4.09, 0.4, -22.72, -4.55, 0.4, -20.88, 1.2, 0.4, -18.81, -5.93, 0.4, -31.46, -7.54, 0.4, -31, -8.46, 0.4, -29.85, -6.62, 0.4, -27.78, -4.78, 0.4, -27.78, -4.32, 0.4, -31.46, -10.53, 0.4, -30.77, -10.76, 0.4, -32.84, -10.76, 0.4, -27.78, -9.61, 0.4, -29.85, -10.53, 0.4, -30.77, -10.76, 0.4, -27.78, -8.92, 0.4, -28.01, 8.56001, 0.8, -26.63, 9.02, 0.8, -27.09, 10.86, 0.4, -32.84, 3.27, 0.4, -32.84, 2.81001, 0.4, -32.15, 7.60167, 0.4, -27.55, 9.388, 0.4, -28.24, 10.86, 0.4, -18.81, 10.86, 0.8, -25.02, 10.4, 0.8, -24.56, 10.492, 0.4, -23.41, 9.02, 0.8, -27.09, 10.4, 0.8, -27.09, 10.86, 0.4, -32.84, 9.388, 0.4, -28.24, 10.492, 0.4, -28.24, -4.55, 0.4, -20.88, -5.24, 0.4, -20.19, 1.2, 0.4, -18.81, 20.75, 0.4, -31.23, 21.67, 0.4, -31.69, 21.67, 0.4, -32.15, 20.75, 0.4, -32.84, 16.38, 0.4, -22.26, 16.84, 0.4, -21.11, 17.3, 0.4, -21.11, 17.76, 0.4, -22.26, 20.75, 0.4, -31.23, 17.76, 0.4, -22.26, 20.75, 0.4, -22.26, 20.75, 0.4, -31.23, 20.75, 0.4, -31.23, 20.75, 0.4, -32.84, 12.7, 0.4, -32.84, 12.7, 0.4, -22.26, 16.38, 0.4, -22.26, -12.83, 0.4, -25.94, -12.83, 0.4, -32.61, -99.31, 0.4, -32.61, -99.31, 0.4, -25.94, -99.31, 0.4, -19.04, -12.83, 0.4, -19.04, -12.83, 0.4, -25.94, -99.31, 0.4, -25.94, 21.67, 0.4, -14.9, 21.67, 0.4, -15.13, 20.75, 0.4, -15.59, 20.75, 0.4, -14.44, 20.75, 0.4, -14.44, 20.75, 0.4, -15.59, 16.38, 0.4, -20.19, 12.7, 0.4, -20.19, 12.7, 0.4, -12.83, 17.76, 0.4, -20.19, 17.3, 0.4, -21.11, 16.84, 0.4, -21.11, 17.76, 0.4, -20.19, 16.84, 0.4, -21.11, 16.38, 0.4, -20.19, 20.75, 0.4, -15.59, 20.75, 0.4, -15.59, 20.75, 0.4, -20.19, 17.76, 0.4, -20.19, 12.7, 0.4, -12.83, 12.7, 0.4, -5.24, 20.75, 0.4, -5.24, 20.75, 0.4, -14.44, -5.7, 0.4, 0.970001, -5.24, 0.4, 1.66, -5.00999, 0.4, 1.66, -5.00999, 0.4, -7.54, -99.31, 0.4, -8.46, -99.31, 0.4, 2.12, -18.81, 0.4, 2.12, -12.37, 0.4, 0.970001, -5.7, 0.4, 0.970001, -5.00999, 0.4, -7.54, -5.00999, 0.4, -7.54, -5.00999, 0.4, -16.74, -12.37, 0.4, -16.74, -5.00999, 0.4, -7.54, -12.37, 0.4, -16.74, -12.83, 0.4, -17.2, -18.35, 0.4, 0.970001, -12.37, 0.4, 0.970001, -18.81, 0.4, 2.12, -18.35, 0.4, 0.970001, -12.83, 0.4, -17.2, -12.83, 0.4, -19.04, -99.31, 0.4, -19.04, -99.31, 0.4, -8.46, 22.36, 0.4, -15.13, 21.67, 0.4, -15.13, 21.67, 0.4, -14.9, 22.82, 0.4, -14.44, 25.58, 0.4, -15.13, 25.12, 0.4, -14.44, 25.58, 0.4, -14.9, 25.12, 0.4, -15.82, 22.82, 0.4, -15.82, 22.36, 0.4, -15.13, 22.82, 0.4, -14.44, 25.12, 0.4, -14.44, 25.58, 0.4, -15.13, 22.82, 0.4, -14.44, 22.82, 0.4, -12.83, 23.28, 0.4, -12.6, 25.12, 0.4, -12.83, 25.12, 0.4, -14.44, 27.19, 0.4, -14.44, 27.19, 0.4, -12.83, 34.78, 0.4, -12.83, 34.78, 0.4, -17.2, 27.19, 0.4, -17.2, 27.19, 0.4, -15.59, 26.73, 0.4, -14.9, 27.19, 0.4, -14.44, 34.78, 0.4, -12.83, 34.78, 0.4, -17.2, 27.19, 0.4, -15.59, 26.73, 0.4, -15.13, 26.73, 0.4, -15.13, 25.58, 0.4, -15.13, 25.58, 0.4, -14.9, 26.73, 0.4, -14.9, 1.2, 0.4, -4.78, 1.89, 0.4, -5.24, 1.89, 0.4, -5.93, 1.2, 0.4, -6.39, -0.639999, 0.4, -6.39, -0.639999, 0.4, -5.24, 1.2, 0.4, -7.77, 1.89, 0.4, -8.23, 1.89, 0.4, -8.92, 1.2, 0.4, -9.38, -0.639999, 0.4, -9.38, -0.639999, 0.4, -8.23, 1.2, 0.4, -10.76, 1.89, 0.4, -11.22, 1.89, 0.4, -11.91, 1.2, 0.4, -12.37, -0.639999, 0.4, -12.37, -0.639999, 0.4, -11.45, 1.2, 0.4, -13.75, 1.89, 0.4, -14.21, 1.89, 0.4, -14.9, 1.2, 0.4, -15.36, -0.639999, 0.4, -15.36, -0.639999, 0.4, -14.44, 1.2, 0.4, -1.79, 1.89, 0.4, -2.71, 1.2, 0.4, -3.17, -0.639999, 0.4, -2.25, -0.639999, 0.4, -8.23, -1.1, 0.4, -8, -1.1, 0.4, -6.85, -0.639999, 0.4, -6.39, 1.2, 0.4, -6.39, 1.2, 0.4, -7.77, -0.639999, 0.4, -2.25, -1.1, 0.4, -2.02, -1.1, 0.4, -0.869995, -0.639999, 0.4, -0.409996, 1.2, 0.4, -0.18, 1.2, 0.4, -1.79, -0.639999, 0.4, 0.740005, 1.89, 0.4, 0.740005, 1.2, 0.4, -0.18, -0.639999, 0.4, -0.409996, -1.1, 0.4, -5.00999, -0.639999, 0.4, -2.25, 1.2, 0.4, -3.17, 1.2, 0.4, -4.78, -0.639999, 0.4, -5.24, -0.639999, 0.4, -11.45, -1.1, 0.4, -11.22, -1.1, 0.4, -9.84, -0.639999, 0.4, -9.38, 1.2, 0.4, -9.38, 1.2, 0.4, -10.76, -0.639999, 0.4, -14.44, -1.1, 0.4, -14.21, -1.1, 0.4, -12.83, -0.639999, 0.4, -12.37, 1.2, 0.4, -12.37, 1.2, 0.4, -13.75, -1.1, 0.4, -16.97, -1.1, 0.4, -15.82, -0.639999, 0.4, -15.36, 1.2, 0.4, -15.36, 1.43, 0.4, -16.97, 3.73, 5.8, -7.77, 3.73, 5.8, -16.74, -3.63, 5.8, -16.74, -3.63, 5.8, -7.77, -3.63, 5.8, -7.77, -3.63, 5.8, 1.43, 3.73, 5.8, 1.43, 3.73, 5.8, -7.77, 10.86, 0.4, -5.00999, 10.86, 0.4, -16.74, 5.11, 0.4, -16.74, 5.11, 0.4, -4.78, 22.82, 0.4, -10.76, 22.82, 0.4, -5.24, 34.78, 0.4, -5.24, 34.78, 0.4, -10.76, 10.86, 0.4, -3.63, 10.86, 0.4, -5.00999, 5.11, 0.4, -4.78, 11.32, 0.4, -3.17, 10.86, 0.4, -3.63, 5.11, 0.4, -4.78, 5.11, 0.4, 2.35, 4.42, 0.4, 2.81001, 12.47, 0.4, 99.41, 20.75, 0.4, 99.41, 17.76, 0.4, -3.17, 11.32, 0.4, -3.17, 5.11, 0.4, 2.35, 17.76, 0.4, -3.17, 5.11, 0.4, 2.35, 4.42, 0.4, 2.81001, 24.2, 0.4, -3.17, 4.42, 0.4, 2.81001, 20.75, 0.4, 99.41, 29.03, 0.4, 99.41, 30.64, 0.4, -3.17, 24.2, 0.4, -3.17, 4.42, 0.4, 2.81001, 37.31, 0.4, -3.17, 30.64, 0.4, -3.17, 4.42, 0.4, 2.81001, 29.03, 0.4, 99.41, 37.31, 0.4, 99.41, 4.42, 0.4, 2.81001, 4.42, 0.4, 99.41, 12.47, 0.4, 99.41, 91.59, 0.4, 99.41, 99.41, 0.4, 99.41, 99.41, 0.4, 92.74, 91.59, 0.4, 99.41, 99.41, 0.4, 92.74, 99.41, 0.4, 86.3, 83.77, 0.4, 99.41, 91.59, 0.4, 99.41, 99.41, 0.4, 86.3, 99.41, 0.4, 79.86, 99.41, 0.4, 15.23, 39.15, 0.4, -3.17, 37.31, 0.4, -3.17, 99.41, 0.4, 21.67, 83.77, 0.4, 99.41, 99.41, 0.4, 79.86, 99.41, 0.4, 73.42, 75.95, 0.4, 99.41, 83.77, 0.4, 99.41, 99.41, 0.4, 73.42, 99.41, 0.4, 66.98, 99.41, 0.4, 40.99, 99.41, 0.4, 34.55, 37.31, 0.4, -3.17, 37.31, 0.4, 99.41, 44.9, 0.4, 99.41, 68.36, 0.4, 99.41, 75.95, 0.4, 99.41, 99.41, 0.4, 66.98, 99.41, 0.4, 60.54, 99.41, 0.4, 28.11, 99.41, 0.4, 21.67, 37.31, 0.4, -3.17, 68.36, 0.4, 99.41, 99.41, 0.4, 60.54, 99.41, 0.4, 54.1, 60.54, 0.4, 99.41, 52.72, 0.4, 99.41, 99.41, 0.4, 47.66, 99.41, 0.4, 40.99, 44.9, 0.4, 99.41, 99.41, 0.4, 2.35, 99.41, 0.4, -4.09, 39.61, 0.4, -4.09, 99.41, 0.4, 2.35, 39.61, 0.4, -4.09, 39.15, 0.4, -3.17, 99.41, 0.4, 8.79, 99.41, 0.4, 34.55, 99.41, 0.4, 28.11, 37.31, 0.4, -3.17, 99.41, 0.4, 15.23, 99.41, 0.4, 8.79, 39.15, 0.4, -3.17, 60.54, 0.4, 99.41, 99.41, 0.4, 54.1, 99.41, 0.4, 47.66, 52.72, 0.4, 99.41, -4.55, 0.4, 2.81001, -5.00999, 0.4, 1.66, -5.24, 0.4, 1.66, -5.7, 0.4, 3.04, -5.7, 0.4, 3.04, -12.37, 0.4, 3.04, -7.31, 0.4, 99.41, 4.42, 0.4, 2.81001, -4.55, 0.4, 2.81001, -5.7, 0.4, 3.04, -7.31, 0.4, 99.41, 4.42, 0.4, 99.41, -18.35, 0.4, 3.04, -18.81, 0.4, 2.58, -18.81, 0.4, 99.41, -12.37, 0.4, 3.04, -18.35, 0.4, 3.04, -18.81, 0.4, 99.41, -7.31, 0.4, 99.41, -99.31, 0.4, 93.2, -99.31, 0.4, 99.41, -89.42, 0.4, 99.41, -99.31, 0.4, 87.22, -99.31, 0.4, 93.2, -89.42, 0.4, 99.41, -99.31, 0.4, 81.01, -99.31, 0.4, 87.22, -89.42, 0.4, 99.41, -99.31, 0.4, 75.03, -99.31, 0.4, 81.01, -89.42, 0.4, 99.41, -99.31, 0.4, 75.03, -89.42, 0.4, 99.41, -79.3, 0.4, 99.41, -99.31, 0.4, 68.82, -99.31, 0.4, 26.27, -99.31, 0.4, 32.25, -59.06, 0.4, 99.41, -49.17, 0.4, 99.41, -99.31, 0.4, 62.84, -99.31, 0.4, 68.82, -79.3, 0.4, 99.41, -99.31, 0.4, 56.63, -99.31, 0.4, 62.84, -79.3, 0.4, 99.41, -99.31, 0.4, 56.63, -79.3, 0.4, 99.41, -69.18, 0.4, 99.41, -99.31, 0.4, 50.65, -18.81, 0.4, 2.58, -99.31, 0.4, 20.06, -99.31, 0.4, 26.27, -39.05, 0.4, 99.41, -28.93, 0.4, 99.41, -99.31, 0.4, 44.44, -99.31, 0.4, 50.65, -69.18, 0.4, 99.41, -99.31, 0.4, 38.46, -99.31, 0.4, 44.44, -69.18, 0.4, 99.41, -99.31, 0.4, 38.46, -69.18, 0.4, 99.41, -59.06, 0.4, 99.41, -99.31, 0.4, 32.25, -28.93, 0.4, 99.41, -18.81, 0.4, 99.41, -18.81, 0.4, 2.58, -18.81, 0.4, 2.58, -18.81, 0.4, 2.12, -99.31, 0.4, 2.12, -99.31, 0.4, 14.08, -99.31, 0.4, 26.27, -49.17, 0.4, 99.41, -39.05, 0.4, 99.41, -18.81, 0.4, 2.58, -99.31, 0.4, 14.08, -99.31, 0.4, 20.06 )
+polygons = [ PoolIntArray( 2, 0, 1 ), PoolIntArray( 5, 3, 4 ), PoolIntArray( 8, 6, 7 ), PoolIntArray( 12, 9, 11 ), PoolIntArray( 9, 10, 11 ), PoolIntArray( 15, 13, 14 ), PoolIntArray( 18, 16, 17 ), PoolIntArray( 21, 19, 20 ), PoolIntArray( 25, 22, 24 ), PoolIntArray( 22, 23, 24 ), PoolIntArray( 29, 26, 28 ), PoolIntArray( 26, 27, 28 ), PoolIntArray( 34, 30, 33 ), PoolIntArray( 30, 31, 33 ), PoolIntArray( 31, 32, 33 ), PoolIntArray( 38, 35, 37 ), PoolIntArray( 35, 36, 37 ), PoolIntArray( 41, 39, 40 ), PoolIntArray( 45, 42, 44 ), PoolIntArray( 42, 43, 44 ), PoolIntArray( 48, 46, 47 ), PoolIntArray( 52, 49, 51 ), PoolIntArray( 49, 50, 51 ), PoolIntArray( 55, 53, 54 ), PoolIntArray( 59, 56, 58 ), PoolIntArray( 56, 57, 58 ), PoolIntArray( 62, 60, 61 ), PoolIntArray( 67, 63, 66 ), PoolIntArray( 63, 64, 66 ), PoolIntArray( 64, 65, 66 ), PoolIntArray( 70, 68, 69 ), PoolIntArray( 73, 71, 72 ), PoolIntArray( 76, 74, 75 ), PoolIntArray( 80, 77, 79 ), PoolIntArray( 77, 78, 79 ), PoolIntArray( 84, 81, 83 ), PoolIntArray( 81, 82, 83 ), PoolIntArray( 88, 85, 87 ), PoolIntArray( 85, 86, 87 ), PoolIntArray( 91, 89, 90 ), PoolIntArray( 95, 92, 94 ), PoolIntArray( 92, 93, 94 ), PoolIntArray( 99, 96, 98 ), PoolIntArray( 96, 97, 98 ), PoolIntArray( 103, 100, 102 ), PoolIntArray( 100, 101, 102 ), PoolIntArray( 108, 104, 107 ), PoolIntArray( 104, 106, 107 ), PoolIntArray( 104, 105, 106 ), PoolIntArray( 112, 109, 111 ), PoolIntArray( 109, 110, 111 ), PoolIntArray( 116, 113, 115 ), PoolIntArray( 113, 114, 115 ), PoolIntArray( 119, 117, 118 ), PoolIntArray( 124, 120, 123 ), PoolIntArray( 120, 121, 123 ), PoolIntArray( 121, 122, 123 ), PoolIntArray( 127, 125, 126 ), PoolIntArray( 133, 128, 132 ), PoolIntArray( 128, 129, 132 ), PoolIntArray( 129, 130, 132 ), PoolIntArray( 130, 131, 132 ), PoolIntArray( 137, 134, 136 ), PoolIntArray( 134, 135, 136 ), PoolIntArray( 140, 138, 139 ), PoolIntArray( 143, 141, 142 ), PoolIntArray( 147, 144, 146 ), PoolIntArray( 144, 145, 146 ), PoolIntArray( 150, 148, 149 ), PoolIntArray( 153, 151, 152 ), PoolIntArray( 158, 154, 157 ), PoolIntArray( 154, 155, 157 ), PoolIntArray( 155, 156, 157 ), PoolIntArray( 161, 159, 160 ), PoolIntArray( 165, 162, 164 ), PoolIntArray( 162, 163, 164 ), PoolIntArray( 169, 166, 168 ), PoolIntArray( 166, 167, 168 ), PoolIntArray( 172, 170, 171 ), PoolIntArray( 176, 173, 175 ), PoolIntArray( 173, 174, 175 ), PoolIntArray( 180, 177, 179 ), PoolIntArray( 177, 178, 179 ), PoolIntArray( 184, 181, 183 ), PoolIntArray( 181, 182, 183 ), PoolIntArray( 187, 185, 186 ), PoolIntArray( 190, 188, 189 ), PoolIntArray( 194, 191, 193 ), PoolIntArray( 191, 192, 193 ), PoolIntArray( 197, 195, 196 ), PoolIntArray( 200, 198, 199 ), PoolIntArray( 206, 201, 205 ), PoolIntArray( 201, 204, 205 ), PoolIntArray( 201, 202, 204 ), PoolIntArray( 202, 203, 204 ), PoolIntArray( 209, 207, 208 ), PoolIntArray( 212, 210, 211 ), PoolIntArray( 216, 213, 215 ), PoolIntArray( 213, 214, 215 ), PoolIntArray( 220, 217, 219 ), PoolIntArray( 217, 218, 219 ), PoolIntArray( 225, 221, 224 ), PoolIntArray( 221, 222, 224 ), PoolIntArray( 222, 223, 224 ), PoolIntArray( 229, 226, 228 ), PoolIntArray( 226, 227, 228 ), PoolIntArray( 233, 230, 232 ), PoolIntArray( 230, 231, 232 ), PoolIntArray( 237, 234, 236 ), PoolIntArray( 234, 235, 236 ), PoolIntArray( 240, 238, 239 ), PoolIntArray( 244, 241, 243 ), PoolIntArray( 241, 242, 243 ), PoolIntArray( 248, 245, 247 ), PoolIntArray( 245, 246, 247 ), PoolIntArray( 251, 249, 250 ), PoolIntArray( 256, 252, 255 ), PoolIntArray( 252, 253, 255 ), PoolIntArray( 253, 254, 255 ), PoolIntArray( 261, 257, 260 ), PoolIntArray( 257, 259, 260 ), PoolIntArray( 257, 258, 259 ), PoolIntArray( 265, 262, 264 ), PoolIntArray( 262, 263, 264 ), PoolIntArray( 269, 266, 268 ), PoolIntArray( 266, 267, 268 ), PoolIntArray( 275, 270, 274 ), PoolIntArray( 270, 273, 274 ), PoolIntArray( 270, 272, 273 ), PoolIntArray( 270, 271, 272 ), PoolIntArray( 278, 276, 277 ), PoolIntArray( 281, 279, 280 ), PoolIntArray( 285, 282, 284 ), PoolIntArray( 282, 283, 284 ), PoolIntArray( 291, 292, 293 ), PoolIntArray( 292, 290, 293 ), PoolIntArray( 292, 289, 290 ), PoolIntArray( 292, 288, 289 ), PoolIntArray( 292, 286, 288 ), PoolIntArray( 286, 287, 288 ), PoolIntArray( 296, 294, 295 ), PoolIntArray( 299, 297, 298 ), PoolIntArray( 305, 300, 304 ), PoolIntArray( 300, 303, 304 ), PoolIntArray( 300, 302, 303 ), PoolIntArray( 300, 301, 302 ), PoolIntArray( 309, 306, 308 ), PoolIntArray( 306, 307, 308 ), PoolIntArray( 313, 310, 315 ), PoolIntArray( 310, 314, 315 ), PoolIntArray( 314, 311, 315 ), PoolIntArray( 311, 312, 315 ), PoolIntArray( 318, 316, 317 ), PoolIntArray( 321, 319, 320 ), PoolIntArray( 324, 322, 323 ), PoolIntArray( 329, 325, 328 ), PoolIntArray( 325, 327, 328 ), PoolIntArray( 325, 326, 327 ), PoolIntArray( 332, 330, 331 ), PoolIntArray( 337, 333, 336 ), PoolIntArray( 333, 335, 336 ), PoolIntArray( 333, 334, 335 ), PoolIntArray( 340, 341, 339 ), PoolIntArray( 341, 342, 339 ), PoolIntArray( 341, 338, 342 ), PoolIntArray( 346, 343, 345 ), PoolIntArray( 343, 344, 345 ), PoolIntArray( 349, 347, 348 ), PoolIntArray( 352, 353, 351 ), PoolIntArray( 353, 350, 351 ), PoolIntArray( 356, 357, 355 ), PoolIntArray( 357, 358, 355 ), PoolIntArray( 357, 354, 358 ), PoolIntArray( 363, 359, 362 ), PoolIntArray( 359, 360, 362 ), PoolIntArray( 360, 361, 362 ), PoolIntArray( 368, 364, 367 ), PoolIntArray( 364, 366, 367 ), PoolIntArray( 364, 365, 366 ), PoolIntArray( 371, 369, 370 ), PoolIntArray( 375, 372, 374 ), PoolIntArray( 372, 373, 374 ), PoolIntArray( 381, 376, 380 ), PoolIntArray( 376, 379, 380 ), PoolIntArray( 376, 377, 379 ), PoolIntArray( 377, 378, 379 ), PoolIntArray( 384, 382, 383 ), PoolIntArray( 388, 385, 387 ), PoolIntArray( 385, 386, 387 ), PoolIntArray( 393, 394, 392 ), PoolIntArray( 394, 389, 392 ), PoolIntArray( 389, 390, 392 ), PoolIntArray( 390, 395, 392 ), PoolIntArray( 395, 391, 392 ), PoolIntArray( 398, 399, 397 ), PoolIntArray( 399, 396, 397 ), PoolIntArray( 402, 403, 404 ), PoolIntArray( 403, 401, 404 ), PoolIntArray( 403, 400, 401 ), PoolIntArray( 407, 405, 406 ), PoolIntArray( 411, 408, 410 ), PoolIntArray( 408, 409, 410 ), PoolIntArray( 416, 412, 415 ), PoolIntArray( 412, 414, 415 ), PoolIntArray( 412, 413, 414 ), PoolIntArray( 419, 417, 418 ), PoolIntArray( 424, 420, 423 ), PoolIntArray( 420, 421, 423 ), PoolIntArray( 421, 422, 423 ), PoolIntArray( 428, 425, 427 ), PoolIntArray( 425, 426, 427 ), PoolIntArray( 432, 429, 431 ), PoolIntArray( 429, 430, 431 ), PoolIntArray( 436, 433, 435 ), PoolIntArray( 433, 434, 435 ), PoolIntArray( 441, 437, 440 ), PoolIntArray( 437, 438, 440 ), PoolIntArray( 438, 439, 440 ), PoolIntArray( 444, 442, 443 ), PoolIntArray( 448, 445, 447 ), PoolIntArray( 445, 446, 447 ), PoolIntArray( 451, 449, 450 ), PoolIntArray( 455, 452, 454 ), PoolIntArray( 452, 453, 454 ), PoolIntArray( 459, 456, 458 ), PoolIntArray( 456, 457, 458 ), PoolIntArray( 462, 460, 461 ), PoolIntArray( 465, 463, 464 ), PoolIntArray( 468, 466, 467 ), PoolIntArray( 473, 469, 472 ), PoolIntArray( 469, 470, 472 ), PoolIntArray( 470, 471, 472 ), PoolIntArray( 479, 474, 478 ), PoolIntArray( 474, 475, 478 ), PoolIntArray( 475, 476, 478 ), PoolIntArray( 476, 477, 478 ), PoolIntArray( 483, 480, 482 ), PoolIntArray( 480, 481, 482 ), PoolIntArray( 486, 484, 485 ), PoolIntArray( 492, 487, 491 ), PoolIntArray( 487, 490, 491 ), PoolIntArray( 487, 489, 490 ), PoolIntArray( 487, 488, 489 ), PoolIntArray( 497, 493, 496 ), PoolIntArray( 493, 495, 496 ), PoolIntArray( 493, 494, 495 ), PoolIntArray( 500, 498, 499 ), PoolIntArray( 503, 501, 502 ), PoolIntArray( 509, 504, 508 ), PoolIntArray( 504, 505, 508 ), PoolIntArray( 505, 506, 508 ), PoolIntArray( 506, 507, 508 ), PoolIntArray( 513, 510, 512 ), PoolIntArray( 510, 511, 512 ), PoolIntArray( 519, 514, 518 ), PoolIntArray( 514, 517, 518 ), PoolIntArray( 514, 516, 517 ), PoolIntArray( 514, 515, 516 ), PoolIntArray( 525, 520, 524 ), PoolIntArray( 520, 523, 524 ), PoolIntArray( 520, 522, 523 ), PoolIntArray( 520, 521, 522 ), PoolIntArray( 531, 526, 530 ), PoolIntArray( 526, 529, 530 ), PoolIntArray( 526, 528, 529 ), PoolIntArray( 526, 527, 528 ), PoolIntArray( 537, 532, 536 ), PoolIntArray( 532, 535, 536 ), PoolIntArray( 532, 534, 535 ), PoolIntArray( 532, 533, 534 ), PoolIntArray( 541, 538, 540 ), PoolIntArray( 538, 539, 540 ), PoolIntArray( 547, 542, 546 ), PoolIntArray( 542, 543, 546 ), PoolIntArray( 543, 544, 546 ), PoolIntArray( 544, 545, 546 ), PoolIntArray( 553, 548, 552 ), PoolIntArray( 548, 549, 552 ), PoolIntArray( 549, 551, 552 ), PoolIntArray( 549, 550, 551 ), PoolIntArray( 557, 554, 556 ), PoolIntArray( 554, 555, 556 ), PoolIntArray( 562, 558, 561 ), PoolIntArray( 558, 560, 561 ), PoolIntArray( 558, 559, 560 ), PoolIntArray( 568, 563, 567 ), PoolIntArray( 563, 564, 567 ), PoolIntArray( 564, 565, 567 ), PoolIntArray( 565, 566, 567 ), PoolIntArray( 574, 569, 573 ), PoolIntArray( 569, 570, 573 ), PoolIntArray( 570, 571, 573 ), PoolIntArray( 571, 572, 573 ), PoolIntArray( 579, 575, 578 ), PoolIntArray( 575, 576, 578 ), PoolIntArray( 576, 577, 578 ), PoolIntArray( 583, 580, 582 ), PoolIntArray( 580, 581, 582 ), PoolIntArray( 587, 584, 586 ), PoolIntArray( 584, 585, 586 ), PoolIntArray( 591, 588, 590 ), PoolIntArray( 588, 589, 590 ), PoolIntArray( 595, 592, 594 ), PoolIntArray( 592, 593, 594 ), PoolIntArray( 598, 596, 597 ), PoolIntArray( 602, 599, 601 ), PoolIntArray( 599, 600, 601 ), PoolIntArray( 605, 603, 604 ), PoolIntArray( 608, 606, 607 ), PoolIntArray( 612, 609, 611 ), PoolIntArray( 609, 610, 611 ), PoolIntArray( 615, 613, 614 ), PoolIntArray( 618, 616, 617 ), PoolIntArray( 623, 619, 622 ), PoolIntArray( 619, 620, 622 ), PoolIntArray( 620, 621, 622 ), PoolIntArray( 626, 624, 625 ), PoolIntArray( 629, 627, 628 ), PoolIntArray( 632, 630, 631 ), PoolIntArray( 636, 633, 635 ), PoolIntArray( 633, 634, 635 ), PoolIntArray( 640, 637, 639 ), PoolIntArray( 637, 638, 639 ), PoolIntArray( 643, 641, 642 ), PoolIntArray( 647, 644, 646 ), PoolIntArray( 644, 645, 646 ), PoolIntArray( 652, 648, 651 ), PoolIntArray( 648, 649, 651 ), PoolIntArray( 649, 650, 651 ), PoolIntArray( 656, 653, 655 ), PoolIntArray( 653, 654, 655 ), PoolIntArray( 659, 657, 658 ), PoolIntArray( 663, 660, 662 ), PoolIntArray( 660, 661, 662 ), PoolIntArray( 667, 664, 666 ), PoolIntArray( 664, 665, 666 ), PoolIntArray( 670, 668, 669 ), PoolIntArray( 674, 671, 673 ), PoolIntArray( 671, 672, 673 ), PoolIntArray( 677, 675, 676 ), PoolIntArray( 680, 678, 679 ), PoolIntArray( 684, 681, 683 ), PoolIntArray( 681, 682, 683 ), PoolIntArray( 688, 685, 687 ), PoolIntArray( 685, 686, 687 ), PoolIntArray( 691, 689, 690 ), PoolIntArray( 696, 692, 695 ), PoolIntArray( 692, 693, 695 ), PoolIntArray( 693, 694, 695 ), PoolIntArray( 699, 697, 698 ), PoolIntArray( 703, 700, 702 ), PoolIntArray( 700, 701, 702 ), PoolIntArray( 706, 704, 705 ), PoolIntArray( 709, 707, 708 ), PoolIntArray( 712, 710, 711 ), PoolIntArray( 715, 713, 714 ), PoolIntArray( 719, 716, 718 ), PoolIntArray( 716, 717, 718 ), PoolIntArray( 723, 720, 722 ), PoolIntArray( 720, 721, 722 ), PoolIntArray( 726, 724, 725 ), PoolIntArray( 729, 727, 728 ), PoolIntArray( 733, 730, 732 ), PoolIntArray( 730, 731, 732 ), PoolIntArray( 738, 734, 737 ), PoolIntArray( 734, 736, 737 ), PoolIntArray( 734, 735, 736 ), PoolIntArray( 741, 739, 740 ), PoolIntArray( 744, 742, 743 ), PoolIntArray( 748, 745, 747 ), PoolIntArray( 745, 746, 747 ), PoolIntArray( 751, 749, 750 ), PoolIntArray( 755, 752, 754 ), PoolIntArray( 752, 753, 754 ), PoolIntArray( 758, 756, 757 ), PoolIntArray( 761, 759, 760 ) ]
+cell/size = 0.23
+
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="BoxShape" id=6]
+
+[sub_resource type="BoxShape" id=7]
+
+[sub_resource type="CubeMesh" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.627451, 0.627451, 0.627451, 1 )
+
+[sub_resource type="CubeMesh" id=10]
+
+[sub_resource type="BoxShape" id=11]
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0.419608, 0.419608, 0.419608, 1 )
+
+[sub_resource type="CubeMesh" id=13]
+material = SubResource( 12 )
+
+[sub_resource type="BoxShape" id=14]
+
+[sub_resource type="CylinderShape" id=15]
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_color = Color( 0.419608, 0.419608, 0.419608, 1 )
+
+[sub_resource type="CylinderMesh" id=17]
+material = SubResource( 16 )
+radial_segments = 8
+rings = 1
+
+[sub_resource type="BoxShape" id=18]
+extents = Vector3( 17.497, 2.35079, 14.7934 )
+
+[sub_resource type="Environment" id=19]
+ambient_light_color = Color( 0.192157, 0.188235, 0.215686, 1 )
+
+[node name="InFactory" type="Navigation"]
+
+[node name="KeysCards" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="Key" parent="KeysCards" instance=ExtResource( 1 )]
+transform = Transform( 0.164765, 0, 1.9932, 0, 2, 0, -1.9932, 0, 0.164765, 27.7316, 1.54941, -9.61762 )
+key_id = 12
+
+[node name="Keycard Lvl2" parent="KeysCards" instance=ExtResource( 2 )]
+transform = Transform( -1.9413, 0, -0.480989, 0, 2, 0, 0.480989, 0, -1.9413, 69.3025, 1, -18.8655 )
+
+[node name="MeldsWes" type="Spatial" parent="."]
+
+[node name="PathNavigatorForNPC3" parent="MeldsWes" instance=ExtResource( 3 )]
+curve = SubResource( 1 )
+body_nodepath = NodePath("Silvester")
+
+[node name="Silvester" parent="MeldsWes/PathNavigatorForNPC3" instance=ExtResource( 4 )]
+transform = Transform( 0.997389, 0, -0.0722117, 0, 1, 0, 0.0722117, 0, 0.997389, -9.03851, 1.15056, -37.9302 )
+speed = 3.0
+
+[node name="Hal" parent="MeldsWes" instance=ExtResource( 4 )]
+transform = Transform( 0.147207, 0, 0.989106, 0, 1, 0, -0.989106, 0, 0.147207, 17.2012, 0.471156, -43.6521 )
+
+[node name="Nino" parent="MeldsWes" instance=ExtResource( 4 )]
+transform = Transform( -0.976652, 0, 0.214828, 0, 1, 0, -0.214828, 0, -0.976652, 67.4817, 0, -69.5728 )
+
+[node name="PathNavigatorForNPC" parent="MeldsWes" instance=ExtResource( 3 )]
+curve = SubResource( 2 )
+body_nodepath = NodePath("Christoph")
+
+[node name="Christoph" parent="MeldsWes/PathNavigatorForNPC" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 67, 0, -30 )
+
+[node name="PathNavigatorForNPC2" parent="MeldsWes" instance=ExtResource( 3 )]
+curve = SubResource( 3 )
+body_nodepath = NodePath("Heinzi")
+
+[node name="Heinzi" parent="MeldsWes/PathNavigatorForNPC2" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, 1.50996e-007, 0, 1, 0, -1.50996e-007, 0, -1, 27.8502, 0, -15.519 )
+
+[node name="Architecture" type="NavigationMeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 1.5, 0, 0, 0, 2, 0, 0, 0 )
+navmesh = SubResource( 4 )
+
+[node name="Areas" type="Spatial" parent="Architecture"]
+editor/display_folded = true
+
+[node name="OutsideEntry" type="Area" parent="Architecture/Areas" groups=[
+"OutsideEntry",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32251, 6.22059 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/Areas/OutsideEntry"]
+transform = Transform( 6.4742, 0, 0, 0, 1, 0, 0, 0, 4.02915, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="LabyrinthEntry" type="Area" parent="Architecture/Areas" groups=[
+"LabyrinthEntry",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89667, 0.32251, -44.0697 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/Areas/LabyrinthEntry"]
+transform = Transform( 6.4742, 0, 0, 0, 1, 0, 0, 0, 4.02915, 0, 0.714925, 0 )
+shape = SubResource( 5 )
+
+[node name="HostileArea1" type="Area" parent="Architecture/Areas" groups=[
+"Forbidden",
+]]
+transform = Transform( 12, 0, 0, 0, 1, 0, 0, 0, 16.5, 24, 1, -20.5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/Areas/HostileArea1"]
+shape = SubResource( 6 )
+
+[node name="HostileArea2" type="Area" parent="Architecture/Areas" groups=[
+"Forbidden",
+]]
+transform = Transform( 15.2, 0, 0, 0, 1, 0, 0, 0, 3, 4.8, 1, -36.8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/Areas/HostileArea2"]
+shape = SubResource( 6 )
+
+[node name="Floor" type="StaticBody" parent="Architecture"]
+editor/display_folded = true
+transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 15, -3.5, -1, -33 )
+collision_layer = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/Floor"]
+shape = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/Floor"]
+layers = 3
+cast_shadow = 0
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="Floor2" type="StaticBody" parent="Architecture"]
+editor/display_folded = true
+transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 15, -3.5, -1, -3 )
+collision_layer = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/Floor2"]
+shape = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/Floor2"]
+layers = 3
+cast_shadow = 0
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="Floor3" type="StaticBody" parent="Architecture"]
+editor/display_folded = true
+transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 15, 26.5, -1, -3 )
+collision_layer = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/Floor3"]
+shape = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/Floor3"]
+layers = 3
+cast_shadow = 0
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="Floor4" type="StaticBody" parent="Architecture"]
+editor/display_folded = true
+transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 15, 26.5, -1, -33 )
+collision_layer = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/Floor4"]
+shape = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/Floor4"]
+layers = 3
+cast_shadow = 0
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="EntryHall" type="Spatial" parent="Architecture"]
+editor/display_folded = true
+
+[node name="DoubleDoorWall" parent="Architecture/EntryHall" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 0, 1.8 )
+
+[node name="MeshInstance" parent="Architecture/EntryHall/DoubleDoorWall/WallPart1" index="0"]
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance" parent="Architecture/EntryHall/DoubleDoorWall/WallPart2" index="0"]
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance" parent="Architecture/EntryHall/DoubleDoorWall/WallPart3" index="0"]
+material/0 = ExtResource( 6 )
+
+[node name="DoorWall" parent="Architecture/EntryHall" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 2 )
+visible = false
+
+[node name="SideWall1" type="StaticBody" parent="Architecture/EntryHall"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2.5, 0, 0, 0, 10, 4, 2.5, -7.73876 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/EntryHall/SideWall1"]
+mesh = SubResource( 10 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/EntryHall/SideWall1"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/EntryHall/SideWall1"]
+shape = SubResource( 11 )
+
+[node name="SideWall2" type="StaticBody" parent="Architecture/EntryHall"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2.5, 0, 0, 0, 10, -4, 2.5, -7.73876 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/EntryHall/SideWall2"]
+mesh = SubResource( 10 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/EntryHall/SideWall2"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/EntryHall/SideWall2"]
+shape = SubResource( 11 )
+
+[node name="Ceiling" type="StaticBody" parent="Architecture/EntryHall"]
+transform = Transform( 4.2, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 5.2, -7.73876 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/EntryHall/Ceiling"]
+mesh = SubResource( 10 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/EntryHall/Ceiling"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/EntryHall/Ceiling"]
+shape = SubResource( 11 )
+
+[node name="Trees" type="Spatial" parent="Architecture/EntryHall"]
+editor/display_folded = true
+
+[node name="TreeTentacle" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.18041, 0, -0.908752 )
+
+[node name="TreeTentacle4" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.18041, 0, -3.909 )
+
+[node name="TreeTentacle5" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.18041, 0, -6.909 )
+
+[node name="TreeTentacle8" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.18041, 0, -9.909 )
+
+[node name="TreeTentacle10" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.18041, 0, -12.909 )
+
+[node name="TreeTentacle12" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.18041, 0, -15.909 )
+
+[node name="TreeTentacle2" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.18, 0, -0.909 )
+
+[node name="TreeTentacle3" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.18, 0, -3.909 )
+
+[node name="TreeTentacle6" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.18, 0, -6.909 )
+
+[node name="TreeTentacle7" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.18, 0, -9.909 )
+
+[node name="TreeTentacle9" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.18, 0, -12.909 )
+
+[node name="TreeTentacle11" parent="Architecture/EntryHall/Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.18, 0, -15.909 )
+
+[node name="FactoryRoomWalls" type="Spatial" parent="Architecture"]
+editor/display_folded = true
+
+[node name="DoubleDoorWall2" parent="Architecture/FactoryRoomWalls" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.8 )
+
+[node name="WallPart1" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2" index="0"]
+editor/display_folded = true
+
+[node name="MeshInstance" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2/WallPart1" index="0"]
+material/0 = ExtResource( 6 )
+
+[node name="WallPart4" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2" index="1"]
+editor/display_folded = true
+
+[node name="MeshInstance" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2/WallPart4" index="0"]
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance2" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2/WallPart4" index="1"]
+material/0 = ExtResource( 10 )
+
+[node name="WallPart2" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2" index="2"]
+editor/display_folded = true
+
+[node name="MeshInstance" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2/WallPart2" index="0"]
+material/0 = ExtResource( 6 )
+
+[node name="WallPart5" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2" index="3"]
+editor/display_folded = true
+
+[node name="MeshInstance" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2/WallPart5" index="0"]
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance2" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2/WallPart5" index="1"]
+material/0 = ExtResource( 10 )
+
+[node name="WallPart3" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2" index="4"]
+editor/display_folded = true
+
+[node name="MeshInstance" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2/WallPart3" index="0"]
+material/0 = ExtResource( 6 )
+
+[node name="WallPart6" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2" index="5"]
+editor/display_folded = true
+
+[node name="MeshInstance" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2/WallPart6" index="0"]
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance2" parent="Architecture/FactoryRoomWalls/DoubleDoorWall2/WallPart6" index="1"]
+material/0 = ExtResource( 10 )
+
+[node name="SideWall" type="StaticBody" parent="Architecture/FactoryRoomWalls"]
+editor/display_folded = true
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 0.2, 7.85921, 4, -17.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall"]
+mesh = SubResource( 10 )
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomWalls/SideWall"]
+shape = SubResource( 11 )
+
+[node name="SideWall2" type="StaticBody" parent="Architecture/FactoryRoomWalls"]
+editor/display_folded = true
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 0.2, -8, 4, -17.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall2"]
+mesh = SubResource( 10 )
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall2"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomWalls/SideWall2"]
+shape = SubResource( 11 )
+
+[node name="SideWall3" type="StaticBody" parent="Architecture/FactoryRoomWalls"]
+editor/display_folded = true
+transform = Transform( 4, 0, 0, 0, 1.5, 0, 0, 0, 0.2, 0, 6.9, -17.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall3"]
+mesh = SubResource( 10 )
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall3"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomWalls/SideWall3"]
+shape = SubResource( 11 )
+
+[node name="SideWall4" type="StaticBody" parent="Architecture/FactoryRoomWalls"]
+editor/display_folded = true
+transform = Transform( 0.1, 0, 0, 0, 4, 0, 0, 0, 8.2, 11.7, 4, -25.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall4"]
+mesh = SubResource( 10 )
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall4"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomWalls/SideWall4"]
+shape = SubResource( 11 )
+
+[node name="SideWall6" type="StaticBody" parent="Architecture/FactoryRoomWalls"]
+editor/display_folded = true
+transform = Transform( 0.1, 0, 0, 0, 4, 0, 0, 0, 8.2, 11.9, 4, -25.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall6"]
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall6"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomWalls/SideWall6"]
+shape = SubResource( 11 )
+
+[node name="SideWall5" type="StaticBody" parent="Architecture/FactoryRoomWalls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 4, 0, 0, 0, 8.2, -11.8, 4, -25.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0520821, -0.00142384, 0.00261068 )
+mesh = SubResource( 10 )
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomWalls/SideWall5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0520821, -0.00142384, 0.00261068 )
+layers = 2
+mesh = SubResource( 10 )
+material/0 = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomWalls/SideWall5"]
+shape = SubResource( 11 )
+
+[node name="BackWall" type="StaticBody" parent="Architecture/FactoryRoomWalls"]
+editor/display_folded = true
+transform = Transform( 9, 0, 0, 0, 4, 0, 0, 0, 0.2, -3, 4, -33.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomWalls/BackWall"]
+mesh = SubResource( 10 )
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomWalls/BackWall"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomWalls/BackWall"]
+shape = SubResource( 11 )
+
+[node name="BackWallMasked" type="StaticBody" parent="Architecture/FactoryRoomWalls"]
+editor/display_folded = true
+transform = Transform( 3, 0, 0, 0, 4, 0, 0, 0, 0.2, 9, 4, -33.8 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomWalls/BackWallMasked"]
+mesh = SubResource( 10 )
+material/0 = ExtResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomWalls/BackWallMasked"]
+shape = SubResource( 11 )
+
+[node name="BackWallTrue" type="Spatial" parent="Architecture/FactoryRoomWalls"]
+editor/display_folded = true
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 8, 1.5, -33.8 )
+
+[node name="Door" parent="Architecture/FactoryRoomWalls/BackWallTrue" groups=[
+"HideTooltip",
+] instance=ExtResource( 11 )]
+editor/display_folded = true
+collision_layer = 3
+collision_mask = 3
+card_door = true
+door_lvl = 1
+
+[node name="DoorMesh" parent="Architecture/FactoryRoomWalls/BackWallTrue/Door" index="0"]
+editor/display_folded = true
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomWalls/BackWallTrue/Door/DoorMesh" index="0"]
+layers = 2
+
+[node name="KnobMesh" parent="Architecture/FactoryRoomWalls/BackWallTrue/Door" index="1"]
+layers = 2
+
+[node name="KnobMesh2" parent="Architecture/FactoryRoomWalls/BackWallTrue/Door" index="2"]
+layers = 2
+
+[node name="BackWall2" type="StaticBody" parent="Architecture/FactoryRoomWalls/BackWallTrue"]
+editor/display_folded = true
+transform = Transform( -1.9, 0, 3.01992e-008, 0, 4, 0, -2.86892e-007, 0, -0.2, -1.9, 2.5, 0 )
+collision_layer = 2
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomWalls/BackWallTrue/BackWall2"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomWalls/BackWallTrue/BackWall2"]
+shape = SubResource( 11 )
+
+[node name="BackWall3" type="StaticBody" parent="Architecture/FactoryRoomWalls/BackWallTrue"]
+editor/display_folded = true
+transform = Transform( -1, 0, 1.74846e-008, 0, 2.7, 0, -8.74228e-008, 0, -0.2, 1, 4.2, 0 )
+collision_layer = 2
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomWalls/BackWallTrue/BackWall3"]
+transform = Transform( 1, 0, -1.77636e-015, 0, 1, 0, 3.55271e-014, 0, 1, 0, 0, 0 )
+layers = 2
+mesh = SubResource( 10 )
+material/0 = ExtResource( 10 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Architecture/FactoryRoomWalls/BackWallTrue/BackWall3"]
+transform = Transform( 1, 0, -1.77636e-015, 0, 1, 0, 3.55271e-014, 0, 1, 0, 0, 0 )
+shape = SubResource( 11 )
+
+[node name="Ceiling" type="StaticBody" parent="Architecture/FactoryRoomWalls"]
+editor/display_folded = true
+transform = Transform( 12, 0, 0, 0, 0.2, 0, 0, 0, 8.2, 0, 8.2, -25.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomWalls/Ceiling"]
+mesh = SubResource( 10 )
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomWalls/Ceiling"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomWalls/Ceiling"]
+shape = SubResource( 11 )
+
+[node name="FactoryRoomInterior" type="Spatial" parent="Architecture"]
+
+[node name="Characters" type="Spatial" parent="Architecture/FactoryRoomInterior"]
+editor/display_folded = true
+
+[node name="Worker" parent="Architecture/FactoryRoomInterior/Characters" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -9.15642, 0, -19.1464 )
+
+[node name="Worker3" parent="Architecture/FactoryRoomInterior/Characters" instance=ExtResource( 12 )]
+transform = Transform( 0.583918, 0, 0.811813, 0, 1, 0, -0.811813, 0, 0.583918, -5.90718, 0, -21.4209 )
+
+[node name="Worker4" parent="Architecture/FactoryRoomInterior/Characters" instance=ExtResource( 12 )]
+transform = Transform( 0.0977879, 0, 0.995207, 0, 1, 0, -0.995207, 0, 0.0977879, -4.54192, 0, -24.0059 )
+
+[node name="Worker5" parent="Architecture/FactoryRoomInterior/Characters" instance=ExtResource( 12 )]
+transform = Transform( -0.401005, 0, 0.916076, 0, 1, 0, -0.916076, 0, -0.401005, -5.39378, 0, -26.5245 )
+
+[node name="Worker2" parent="Architecture/FactoryRoomInterior/Characters" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05891, 0, -31.1187 )
+
+[node name="PipeGame" parent="Architecture/FactoryRoomInterior" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 2, -34.4 )
+
+[node name="StatueBlock" type="StaticBody" parent="Architecture/FactoryRoomInterior"]
+editor/display_folded = true
+transform = Transform( 1.2, 0, 0, 0, 0.25, 0, 0, 0, 1.5, 9.5, 0.25, -25.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomInterior/StatueBlock"]
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomInterior/StatueBlock"]
+layers = 2
+mesh = SubResource( 10 )
+material/0 = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomInterior/StatueBlock"]
+shape = SubResource( 11 )
+
+[node name="Statue" parent="Architecture/FactoryRoomInterior" instance=ExtResource( 14 )]
+transform = Transform( -7.86805e-008, 0, -2.5, 0, 1.8, 0, 1.8, 0, -1.09278e-007, 9.5, 0.5, -25.8 )
+
+[node name="FakeStuff" type="Spatial" parent="Architecture/FactoryRoomInterior"]
+editor/display_folded = true
+
+[node name="FakeMachineNode" type="Spatial" parent="Architecture/FactoryRoomInterior/FakeStuff"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.8, -19.2 )
+
+[node name="FakeLever1" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode" instance=ExtResource( 15 )]
+transform = Transform( -6.55671e-008, 0, 1, 0, 1.5, 0, -1.5, 0, -4.37114e-008, 0.460504, -0.3, 0 )
+collision_layer = 3
+
+[node name="Pipe1" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode" instance=ExtResource( 16 )]
+transform = Transform( -1.25, 1.09278e-007, 4.77671e-015, 0, -5.46392e-008, 1.25, 1.09278e-007, 1.25, 5.46392e-008, 0.1, 0.2, -1 )
+mesh_path = NodePath("../../FakeStuff/FakeNode/Spatial57/Mesh")
+color_cast_left = NodePath("../../FakeStuff/FakeNode/Spatial57/ColorCast")
+
+[node name="Pipe2" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -0.3, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe3" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -0.8, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe4" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -1.3, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe5" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -1.8, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="FakeMachine1" type="StaticBody" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode"]
+editor/display_folded = true
+transform = Transform( 0.4, 0, 0, 0, 1.8, 0, 0, 0, 0.7, 0, 0, 0 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode/FakeMachine1"]
+mesh = SubResource( 13 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode/FakeMachine1"]
+layers = 2
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode/FakeMachine1"]
+shape = SubResource( 14 )
+
+[node name="FakeMachineNode2" type="Spatial" parent="Architecture/FactoryRoomInterior/FakeStuff"]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -8.9, 1.8, -33.156 )
+
+[node name="FakeLever1" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 15 )]
+transform = Transform( -6.55671e-008, 0, 1, 0, 1.5, 0, -1.5, 0, -4.37114e-008, 0.460504, -0.3, 0 )
+collision_layer = 3
+
+[node name="Pipe1" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 16 )]
+transform = Transform( -1.25, 1.09278e-007, 4.77671e-015, 0, -5.46392e-008, 1.25, 1.09278e-007, 1.25, 5.46392e-008, 0.1, 0.2, -1 )
+mesh_path = NodePath("../../FakeStuff/FakeNode/Spatial57/Mesh")
+color_cast_left = NodePath("../../FakeStuff/FakeNode/Spatial57/ColorCast")
+
+[node name="Pipe2" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -0.3, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe3" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -0.8, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe4" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -1.3, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe5" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -1.8, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="FakeMachine1" type="StaticBody" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2"]
+editor/display_folded = true
+transform = Transform( 0.4, 0, 0, 0, 1.8, 0, 0, 0, 0.7, 0, 0, 0 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2/FakeMachine1"]
+mesh = SubResource( 13 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2/FakeMachine1"]
+layers = 2
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2/FakeMachine1"]
+shape = SubResource( 14 )
+
+[node name="Spatial76" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 17 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, -0.0440025, 2.5, 0.5 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial78" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 17 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, -0.0440025, 2.5, -0.5 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial79" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 17 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, -0.0440025, 2.5, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial80" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 17 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, -0.044, 2.5, -1.5 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial77" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 1.25, -5.46392e-008, 0, -5.46392e-008, -1.25, -1.25, -5.46392e-008, 2.38836e-015, -0.0440025, 2, 0 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial57" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode2" instance=ExtResource( 18 )]
+transform = Transform( 1.25, 1.09278e-007, -1.09278e-007, 1.09278e-007, -1.25, 0, -1.09278e-007, -9.55343e-015, -1.25, -0.0440025, 2.5, 0 )
+mesh_path = NodePath("../../FakeStuff/FakeMachineNode2/Spatial57/Mesh")
+color_cast_left = NodePath("../../FakeStuff/FakeMachineNode2/Spatial57/ColorCastLeft")
+color_cast_up = NodePath("../../FakeStuff/FakeMachineNode2/Spatial57/ColorCastUp")
+
+[node name="FakeMachineNode3" type="Spatial" parent="Architecture/FactoryRoomInterior/FakeStuff"]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -6.4, 1.8, -33.156 )
+
+[node name="FakeLever1" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 15 )]
+transform = Transform( -6.55671e-008, 0, 1, 0, 1.5, 0, -1.5, 0, -4.37114e-008, 0.460504, -0.3, 0 )
+collision_layer = 3
+
+[node name="Pipe1" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 16 )]
+transform = Transform( -1.25, 1.09278e-007, 4.77671e-015, 0, -5.46392e-008, 1.25, 1.09278e-007, 1.25, 5.46392e-008, 0.1, 0.2, -1 )
+mesh_path = NodePath("../../FakeStuff/FakeNode/Spatial57/Mesh")
+color_cast_left = NodePath("../../FakeStuff/FakeNode/Spatial57/ColorCast")
+
+[node name="Pipe2" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -0.3, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe3" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -0.8, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe4" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -1.3, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe5" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -1.8, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="FakeMachine1" type="StaticBody" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3"]
+editor/display_folded = true
+transform = Transform( 0.4, 0, 0, 0, 1.8, 0, 0, 0, 0.7, 0, 0, 0 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3/FakeMachine1"]
+mesh = SubResource( 13 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3/FakeMachine1"]
+layers = 2
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3/FakeMachine1"]
+shape = SubResource( 14 )
+
+[node name="Spatial76" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 17 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, -0.0440025, 2.5, 0.5 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial78" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 17 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, -0.0440025, 2.5, -0.5 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial79" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 17 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, -0.0440025, 2.5, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial80" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 17 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, -0.044, 2.5, -1.5 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial77" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 1.25, -5.46392e-008, 0, -5.46392e-008, -1.25, -1.25, -5.46392e-008, 2.38836e-015, -0.0440025, 2, 0 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial57" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode3" instance=ExtResource( 18 )]
+transform = Transform( 1.25, 1.09278e-007, -1.09278e-007, 1.09278e-007, -1.25, 0, -1.09278e-007, -9.55343e-015, -1.25, -0.0440025, 2.5, 0 )
+mesh_path = NodePath("../../FakeStuff/FakeMachineNode2/Spatial57/Mesh")
+color_cast_left = NodePath("../../FakeStuff/FakeMachineNode2/Spatial57/ColorCastLeft")
+color_cast_up = NodePath("../../FakeStuff/FakeMachineNode2/Spatial57/ColorCastUp")
+
+[node name="FakeMachineNode4" type="Spatial" parent="Architecture/FactoryRoomInterior/FakeStuff"]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -3.9, 1.8, -33.156 )
+
+[node name="FakeLever1" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 15 )]
+transform = Transform( -6.55671e-008, 0, 1, 0, 1.5, 0, -1.5, 0, -4.37114e-008, 0.460504, -0.3, 0 )
+collision_layer = 3
+
+[node name="Pipe1" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 16 )]
+transform = Transform( -1.25, 1.09278e-007, 4.77671e-015, 0, -5.46392e-008, 1.25, 1.09278e-007, 1.25, 5.46392e-008, 0.1, 0.2, -1 )
+mesh_path = NodePath("../../FakeStuff/FakeNode/Spatial57/Mesh")
+color_cast_left = NodePath("../../FakeStuff/FakeNode/Spatial57/ColorCast")
+
+[node name="Pipe6" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 16 )]
+transform = Transform( 5.46392e-008, -1.25, -1.09278e-007, -1.25, -5.46392e-008, 0, -4.77671e-015, 1.09278e-007, -1.25, -0.0432396, 2.5, -0.5 )
+mesh_path = NodePath("../../FakeStuff/FakeNode/Spatial57/Mesh")
+color_cast_left = NodePath("../../FakeStuff/FakeNode/Spatial57/ColorCast")
+
+[node name="Pipe2" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -0.3, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe3" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -0.8, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe4" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -1.3, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Pipe5" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, -1.8, -1 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="FakeMachine1" type="StaticBody" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4"]
+editor/display_folded = true
+transform = Transform( 0.4, 0, 0, 0, 1.8, 0, 0, 0, 0.7, 0, 0, 0 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4/FakeMachine1"]
+mesh = SubResource( 13 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4/FakeMachine1"]
+layers = 2
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4/FakeMachine1"]
+shape = SubResource( 14 )
+
+[node name="Spatial76" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 17 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, -0.0440025, 2.5, 0.5 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial78" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, -0.544, 2.5, -0.5 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial77" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 1.25, -5.46392e-008, 0, -5.46392e-008, -1.25, -1.25, -5.46392e-008, 2.38836e-015, -0.0440025, 2, 0 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial57" parent="Architecture/FactoryRoomInterior/FakeStuff/FakeMachineNode4" instance=ExtResource( 18 )]
+transform = Transform( 1.25, 1.09278e-007, -1.09278e-007, 1.09278e-007, -1.25, 0, -1.09278e-007, -9.55343e-015, -1.25, -0.0440025, 2.5, 0 )
+mesh_path = NodePath("../../FakeStuff/FakeMachineNode2/Spatial57/Mesh")
+color_cast_left = NodePath("../../FakeStuff/FakeMachineNode2/Spatial57/ColorCastLeft")
+color_cast_up = NodePath("../../FakeStuff/FakeMachineNode2/Spatial57/ColorCastUp")
+
+[node name="BigFake" type="Spatial" parent="Architecture/FactoryRoomInterior/FakeStuff"]
+editor/display_folded = true
+transform = Transform( 1.5, 0, 0, 0, 2.5, 0, 0, 0, 1.5, -9.69702, 2.44865, -25.3185 )
+
+[node name="FakeLever2" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( 0.389936, 0, 0.613894, 0, 0.6, 0, -0.920841, 0, 0.259958, 0.739319, 0.301515, 0.628056 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever2" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever2" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever2/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever12" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( 0.932694, 0, 0.240444, 0, 0.6, 0, -0.360665, 0, 0.621796, 0.470026, 0.566844, 0.826023 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever12" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever12" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever12/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever13" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( 0.932694, 0, 0.240444, 0, 0.6, 0, -0.360665, 0, 0.621796, 0.261231, -0.257012, 0.910677 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever13" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever13" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever13/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever14" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( 0.932694, 0, 0.240444, 0, 0.6, 0, -0.360665, 0, 0.621796, 0.517231, -0.7341, 0.804684 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever14" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever14" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever14/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever3" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( 0.389936, 0, 0.613894, 0, 0.6, 0, -0.92084, 0, 0.259958, 0.911613, 0.690298, 0.32996 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever3" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever3" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever3/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever4" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( 0.389936, 0, 0.613894, 0, 0.6, 0, -0.92084, 0, 0.259958, 0.990747, 0.0181424, 0.126163 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever4" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever4" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever4/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever5" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( 0.389936, 0, 0.613894, 0, 0.6, 0, -0.92084, 0, 0.259958, 0.786377, -0.358837, 0.571337 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever5" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever5" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever5/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever6" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( 0.389936, 0, 0.613894, 0, 0.6, 0, -0.92084, 0, 0.259958, 0.968397, -0.56115, 0.200191 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever6" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever6" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever6/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever7" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( -0.36787, 0, 0.619917, 0, 0.6, 0, -0.929875, 0, -0.245247, 0.830002, 0.806876, -0.422737 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever7" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever7" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever7/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever8" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( -0.382083, 0, 0.616084, 0, 0.6, 0, -0.924126, 0, -0.254722, 0.940332, 0.331434, -0.176144 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever8" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever8" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever8/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever9" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( -0.382083, 0, 0.616084, 0, 0.6, 0, -0.924126, 0, -0.254722, 0.742438, 0.331434, -0.67211 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever9" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever9" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever9/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever15" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( -0.929975, 0, 0.245077, 0, 0.6, 0, -0.367616, 0, -0.619984, 0.399158, 0.605214, -0.835735 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever15" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever15" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever15/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever16" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( -0.929975, 0, 0.245077, 0, 0.6, 0, -0.367616, 0, -0.619984, 0.247136, 0.208497, -0.93951 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever16" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever16" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever16/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever17" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( -0.929975, 0, 0.245077, 0, 0.6, 0, -0.367616, 0, -0.619984, 0.116747, -0.355989, -0.977369 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever17" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever17" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever17/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever10" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( -0.382083, 0, 0.616084, 0, 0.6, 0, -0.924126, 0, -0.254722, 0.734167, -0.0943967, -0.605713 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever10" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever10" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever10/LeverMesh" index="0"]
+layers = 2
+
+[node name="FakeLever11" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake" instance=ExtResource( 15 )]
+editor/display_folded = true
+transform = Transform( -0.382083, 0, 0.616084, 0, 0.6, 0, -0.924126, 0, -0.254722, 0.865133, -0.586385, -0.361298 )
+collision_layer = 3
+
+[node name="BoxMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever11" index="0"]
+layers = 2
+
+[node name="LeverMesh" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever11" index="1"]
+layers = 2
+
+[node name="Outline" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever11/LeverMesh" index="0"]
+layers = 2
+
+[node name="StaticBody" type="StaticBody" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake"]
+editor/display_folded = true
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/StaticBody"]
+shape = SubResource( 15 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/StaticBody"]
+mesh = SubResource( 17 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Architecture/FactoryRoomInterior/FakeStuff/BigFake/StaticBody"]
+layers = 2
+mesh = SubResource( 17 )
+material/0 = null
+
+[node name="DecoPipes" type="Spatial" parent="Architecture/FactoryRoomInterior"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -26 )
+
+[node name="Spatial" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, -0.4, 7.8, -6.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial3" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, -0.4, 7.3, -6.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial4" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.4, 6.8, -5.7 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial5" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.4, 6.8, -5.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial6" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.4, 6.8, -4.7 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial8" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.4, 6.8, -3.7 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial63" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.1, 6.3, -4.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial11" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.1, 7.3, -3.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial64" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.6, 6.3, -4.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial66" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.1, 6.3, -4.7 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial68" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 1.1, 5.8, -5.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial70" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.1, 5.3, -5.7 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial71" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.1, 5.3, -6.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial72" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.1, 5.3, -6.7 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial74" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 1.1, 4.8, -7.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial13" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 1.1, 7.3, -3.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial38" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.6, 7.8, -3.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial14" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 1.6, 7.3, -3.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial15" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 2.1, 7.3, -3.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial17" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, -2.7 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial18" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, -2.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial19" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, -1.7 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial21" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, -0.7 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial20" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, -1.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial22" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, -0.2 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial23" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, 0.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial24" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, 0.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial26" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, 1.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial32" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 2.1, 7.3, 2.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial33" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 1.6, 7.3, 2.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial35" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.6, 7.3, 2.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial39" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.1, 7.3, 3.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial42" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.1, 7.3, 3.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial43" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.1, 7.3, 4.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial44" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.1, 7.3, 4.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial49" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.1, 6.8, 6.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial51" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, 6.3, 6.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial52" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, 5.8, 6.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial53" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, 5.3, 6.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial54" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, 4.8, 6.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial55" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, 4.3, 6.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial56" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, 3.8, 6.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial46" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0.1, 7.8, 5.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial40" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.1, 7.3, 2.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial58" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.6, 6.8, 1.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial60" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 1.1, 6.3, 1.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial61" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 1.1, 5.8, 1.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial76" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 1.1, 5.3, 1.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial80" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.6, 4.3, 2.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial94" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.6, 0.762954, 2.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial108" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, -1.09278e-007, -1.25, 0, -1.25, 1.09278e-007, -1.25, 4.77671e-015, 5.46392e-008, 0.6, 1.05483, -0.823263 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial90" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.6, 2.53351, 1.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial91" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.6, 2.53351, 2.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial99" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.1, 2.03351, 3.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial103" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.1, 1.53351, 3.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial105" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, -0.4, 1.53351, 3.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial81" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.1, 4.3, 2.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial96" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.1, 0.762954, 2.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial107" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, -1.09278e-007, -1.25, 0, -1.25, 1.09278e-007, -1.25, 4.77671e-015, 5.46392e-008, 0.1, 1.05483, -0.823263 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial82" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, -0.4, 4.3, 2.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial95" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, -0.4, 0.762954, 2.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial109" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, -1.09278e-007, -1.25, 0, -1.25, 1.09278e-007, -1.25, 4.77671e-015, 5.46392e-008, -0.4, 1.05483, -0.823263 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial77" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 1.1, 4.8, 1.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial27" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, 1.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial28" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, 2.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial29" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, 3.3 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial7" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 18 )]
+transform = Transform( -1.25, 1.09278e-007, 0, -1.09278e-007, -1.25, 0, 0, 0, 1.25, -0.4, 6.8, -4.2 )
+
+[node name="Spatial12" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 18 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.6, 7.3, -3.2 )
+
+[node name="Spatial37" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 18 )]
+transform = Transform( 5.46392e-008, 1.25, -1.09278e-007, 1.25, -5.46392e-008, 0, -4.77671e-015, -1.09278e-007, -1.25, 0.1, 7.3, 2.8 )
+
+[node name="Spatial45" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 18 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.1, 7.3, 5.3 )
+
+[node name="Spatial25" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 18 )]
+transform = Transform( -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0, 0, 0, 1.25, 2.6, 7.3, 2.3 )
+
+[node name="Spatial2" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, -0.4, 6.8, -6.2 )
+
+[node name="Spatial9" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.4, 6.8, -3.2 )
+
+[node name="Spatial62" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.46392e-008, -0.4, 6.3, -4.2 )
+
+[node name="Spatial65" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0, 0, 0, 1.25, 1.1, 6.3, -4.2 )
+
+[node name="Spatial67" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 1.25, 0, 0, 0, -1.23159, 1.12083e-007, 0, -1.07669e-007, -1.28208, 1.1, 6.3, -5.2 )
+
+[node name="Spatial69" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 1.25, 0, 0, 0, 1.23159, 0, 0, 0, 1.28208, 1.1, 5.3, -5.2 )
+
+[node name="Spatial73" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 1.25, 0, 0, 0, -1.25, 1.88745e-007, 0, -1.88745e-007, -1.25, 1.1, 5.3, -7.2 )
+
+[node name="Spatial75" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.46392e-008, 1.1, 4.3, -7.2 )
+
+[node name="Spatial10" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, -1.09278e-007, -1.25, 0, -1.25, 1.09278e-007, -1.25, 4.77671e-015, 5.46392e-008, -0.4, 7.3, -3.2 )
+
+[node name="Spatial16" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 2.38836e-015, 5.46392e-008, 1.25, 1.25, -5.46392e-008, 0, 5.46392e-008, 1.25, -5.46392e-008, 2.6, 7.3, -3.2 )
+
+[node name="Spatial30" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 2.6, 7.3, 3.8 )
+
+[node name="Spatial34" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 5.46392e-008, 1.25, -1.09278e-007, 1.25, -5.46392e-008, 0, -4.77671e-015, -1.09278e-007, -1.25, 1.1, 7.3, 2.3 )
+
+[node name="Spatial41" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 1.25, -1.09278e-007, -1.09278e-007, -1.09278e-007, -1.25, 0, -1.09278e-007, 9.55343e-015, -1.25, 0.1, 7.3, 1.8 )
+
+[node name="Spatial57" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.46392e-008, 0.1, 6.8, 1.8 )
+
+[node name="Spatial59" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 5.46392e-008, -4.77671e-015, 1.25, -1.09278e-007, -1.25, 0, 1.25, -1.09278e-007, -5.46392e-008, 1.1, 6.8, 1.8 )
+
+[node name="Spatial78" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0, 0, 0, 1.25, 1.1, 4.3, 2.3 )
+
+[node name="Spatial93" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0, 0, 0, 1.25, 1.1, 0.762954, 2.3 )
+
+[node name="Spatial106" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, -1.25, 0, -1.25, 5.46392e-008, 1.09278e-007, -1.09278e-007, 4.77671e-015, -1.25, 1.1, 1.05483, -0.823263 )
+
+[node name="Spatial92" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0, 0, 0, 1.25, 1.6, 2.53351, 2.8 )
+
+[node name="Spatial97" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 5.46392e-008, -4.77671e-015, -1.25, -1.09278e-007, -1.25, 0, -1.25, 1.09278e-007, -5.46392e-008, 1.1, 2.53351, 2.8 )
+
+[node name="Spatial98" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, 1.1, 2.03351, 2.8 )
+
+[node name="Spatial100" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0, 0, 0, 1.25, 1.1, 2.03351, 3.8 )
+
+[node name="Spatial101" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 5.46392e-008, -4.77671e-015, -1.25, -1.09278e-007, -1.25, 0, -1.25, 1.09278e-007, -5.46392e-008, 0.6, 2.03351, 3.8 )
+
+[node name="Spatial102" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.6, 1.53351, 3.8 )
+
+[node name="Spatial79" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 2.38836e-015, 5.46392e-008, 1.25, 1.25, -5.46392e-008, 0, 5.46392e-008, 1.25, -5.46392e-008, 1.41381, 3.12265, -1.02213 )
+
+[node name="Spatial104" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 1.25, -1.09278e-007, -1.09278e-007, -1.09278e-007, -1.25, 0, -1.09278e-007, 9.55343e-015, -1.25, 2.10886, 1.92702, -0.666935 )
+
+[node name="StraightPipe" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 2.109, 1.427, -0.667 )
+
+[node name="StraightPipe2" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 2.109, 0.927, -0.667 )
+
+[node name="StraightPipe3" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 2.109, 0.427, -0.667 )
+
+[node name="StraightPipe4" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 2.109, 0, -0.667 )
+
+[node name="Spatial86" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, 0.914, 3.123, -1.022 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial89" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.414, 3.123, -0.522 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial87" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, -0.414, 2.623, -1.522 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial88" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( -5.46392e-008, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-008, -0.0683584, 2.623, -1.522 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="Spatial83" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 5.46392e-008, -4.77671e-015, -1.25, -1.09278e-007, -1.25, 0, -1.25, 1.09278e-007, -5.46392e-008, 0.414, 3.123, -1.022 )
+
+[node name="Spatial84" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.414, 2.623, -1.022 )
+
+[node name="Spatial85" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( 5.46392e-008, -1.25, -1.09278e-007, -1.25, -5.46392e-008, 0, -4.77671e-015, 1.09278e-007, -1.25, 0.414, 2.623, -1.522 )
+
+[node name="Spatial47" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -1.25, -1.09278e-007, 0, 1.09278e-007, -1.25, 0, 0, 0, 1.25, 0.1, 7.3, 5.8 )
+
+[node name="Spatial50" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -1.25, -1.09278e-007, 0, 1.09278e-007, -1.25, 0, 0, 0, 1.25, 0.1, 6.8, 6.8 )
+
+[node name="Spatial48" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -1.25, 0, -1.09278e-007, 0, 1.25, 0, 1.09278e-007, 0, -1.25, 0.1, 6.8, 5.8 )
+
+[node name="Spatial36" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 16 )]
+transform = Transform( -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 0, 0, 0, 1.25, 1.1, 7.3, 2.8 )
+
+[node name="Spatial31" parent="Architecture/FactoryRoomInterior/DecoPipes" instance=ExtResource( 17 )]
+transform = Transform( 1.25, 0, 0, 0, -5.46392e-008, -1.25, 0, 1.25, -5.46392e-008, 2.6, 7.8, 3.8 )
+mesh_path = NodePath("../DecoPipes/Spatial/Mesh")
+color_cast_left = NodePath("../DecoPipes/Spatial/ColorCast")
+
+[node name="KeyThing" type="Spatial" parent="Architecture/FactoryRoomInterior"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5358, 0.603744, -25.6147 )
+
+[node name="PlayerHomeKey" parent="Architecture/FactoryRoomInterior/KeyThing" groups=[
+"HideTooltip",
+] instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0, 1, -0.0859051, -0.085054, 0 )
+key_id = 20
+
+[node name="Sparkle" parent="Architecture/FactoryRoomInterior/KeyThing/PlayerHomeKey" index="3"]
+transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="White" parent="Architecture/FactoryRoomInterior/KeyThing/PlayerHomeKey/Sparkle" index="0"]
+layers = 2
+
+[node name="Yellow" parent="Architecture/FactoryRoomInterior/KeyThing/PlayerHomeKey/Sparkle" index="1"]
+layers = 2
+
+[node name="Pipe" parent="Architecture/FactoryRoomInterior/KeyThing" instance=ExtResource( 16 )]
+editor/display_folded = true
+transform = Transform( 1.91069e-015, 4.37114e-008, 1, 1, -4.37114e-008, 0, 4.37114e-008, 1, -4.37114e-008, 0, 0, 0 )
+collision_layer = 0
+collision_mask = 0
+mesh_path = NodePath("../Pipe/Mesh")
+color_cast_left = NodePath("../Pipe/ColorCast")
+
+[node name="Mesh" parent="Architecture/FactoryRoomInterior/KeyThing/Pipe" index="0"]
+layers = 1
+
+[node name="OfficeSpace" type="Spatial" parent="Architecture"]
+editor/display_folded = true
+
+[node name="Walls" type="Spatial" parent="Architecture/OfficeSpace"]
+
+[node name="Wall" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 22, 0, 0, 0, 2, 0, 0, 0, 0.2, 15.2, 2, -36.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall"]
+shape = SubResource( 11 )
+
+[node name="Wall2" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 3, -10.3, 2, -36.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall2"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall2"]
+shape = SubResource( 11 )
+
+[node name="Wall3" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 1.5, -6.8, 2, -38.2 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall3"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall3"]
+shape = SubResource( 11 )
+
+[node name="Wall4" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.3, 0, 0, 0, 2, 0, 0, 0, 0.2, -7.25, 2, -39.4 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall4"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall4"]
+shape = SubResource( 11 )
+
+[node name="Wall5" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.3, 0, 0, 0, 2, 0, 0, 0, 0.2, -9.85, 2, -39.4 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall5"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall5"]
+shape = SubResource( 11 )
+
+[node name="Wall6" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 0.2, -8.55, 3.5, -39.4 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall6"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall6"]
+shape = SubResource( 11 )
+
+[node name="Wall7" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 5, 0, 0, 0, 2, 0, 0, 0, 0.2, 17, 2, -33.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall7"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall7"]
+shape = SubResource( 11 )
+
+[node name="Wall12" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 0.2, 14, 2, -21.2 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall12"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall12"]
+shape = SubResource( 11 )
+
+[node name="Wall23" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 0.2, 20, 2, -21.2 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall23"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall23"]
+shape = SubResource( 11 )
+
+[node name="Wall14" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 5, 0, 0, 0, 2, 0, 0, 0, 0.2, 31, 2, -18.2 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall14"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall14"]
+shape = SubResource( 11 )
+
+[node name="Wall15" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 5.5, 0, 0, 0, 2, 0, 0, 0, 0.2, 30.5, 2, -11.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall15"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall15"]
+shape = SubResource( 11 )
+
+[node name="Wall11" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 5, 21.8, 2, -26 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall11"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall11"]
+shape = SubResource( 11 )
+
+[node name="Wall16" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 5, 21.8, 2, -9 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall16"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall16"]
+shape = SubResource( 11 )
+
+[node name="Wall17" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 2.5, 21.8, 2, -18.5 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall17"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall17"]
+shape = SubResource( 11 )
+
+[node name="Wall18" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 1.5, 26.2, 2, -17.5 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall18"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall18"]
+shape = SubResource( 11 )
+
+[node name="Wall21" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 0.5, 26.2, 2, -36.5 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall21"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall21"]
+shape = SubResource( 11 )
+
+[node name="Wall24" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, 26.2, 3.5, -35 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall24"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall24"]
+shape = SubResource( 11 )
+
+[node name="Wall25" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, 26.2, 3.5, -20 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall25"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall25"]
+shape = SubResource( 11 )
+
+[node name="Wall26" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, 26.2, 3.5, -15 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall26"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall26"]
+shape = SubResource( 11 )
+
+[node name="Wall28" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, 21.8, 3.5, -15 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall28"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall28"]
+shape = SubResource( 11 )
+
+[node name="Wall29" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, 21.8, 3.5, -32 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall29"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall29"]
+shape = SubResource( 11 )
+
+[node name="Wall27" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 0.2, 24, 3.5, -11.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall27"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall27"]
+shape = SubResource( 11 )
+
+[node name="Wall30" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 0.2, 17, 3.5, -21.2 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall30"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall30"]
+shape = SubResource( 11 )
+
+[node name="Wall22" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 0.5, 21.8, 2, -33.5 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall22"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall22"]
+shape = SubResource( 11 )
+
+[node name="Wall19" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 1, 26.2, 2, -13 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall19"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall19"]
+shape = SubResource( 11 )
+
+[node name="Wall20" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.5, 0, 0, 0, 2, 0, 0, 0, 0.2, 22.5, 2, -11.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall20"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall20"]
+shape = SubResource( 11 )
+
+[node name="Wall13" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 6.5, 26.2, 2, -27.5 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall13"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall13"]
+shape = SubResource( 11 )
+
+[node name="Wall8" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 16.5, 35.8, 2, -20.5 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall8"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall8"]
+shape = SubResource( 11 )
+
+[node name="Wall9" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 0.2, 0, 0, 0, 2, 0, 0, 0, 6.8, 11.8, 2, -10.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall9"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall9"]
+shape = SubResource( 11 )
+
+[node name="Wall10" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 13.5, 0, 0, 0, 2, 0, 0, 0, 0.2, 25.2, 2, -4.2 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Wall10"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Wall10"]
+shape = SubResource( 11 )
+
+[node name="Ceiling" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 15.2, 0, 0, 0, 0.2, 0, 0, 0, 3, 4.8, 3.8, -36.8 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Ceiling"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Ceiling"]
+shape = SubResource( 11 )
+
+[node name="Ceiling2" type="StaticBody" parent="Architecture/OfficeSpace/Walls"]
+editor/display_folded = true
+transform = Transform( 12, 0, 0, 0, 0.2, 0, 0, 0, 16.5, 24, 3.8, -20.5 )
+collision_layer = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Architecture/OfficeSpace/Walls/Ceiling2"]
+layers = 3
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Architecture/OfficeSpace/Walls/Ceiling2"]
+shape = SubResource( 11 )
+
+[node name="Doors" type="Spatial" parent="Architecture/OfficeSpace"]
+
+[node name="Door2" parent="Architecture/OfficeSpace/Doors" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1.5, -11.8 )
+invert_open = true
+door_lvl = 12
+
+[node name="Door" parent="Architecture/OfficeSpace/Doors" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.55, 1.5, -39.5 )
+invert_open = true
+card_door = true
+door_lvl = 2
+
+[node name="Player" parent="." instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+IsOutside = false
+IsInFactory = true
+
+[node name="NodeGroupNotifier" parent="." instance=ExtResource( 20 )]
+group_name = "Navigator"
+node_to_send = NodePath("..")
+
+[node name="FactoryMusicHandler" type="Node" parent="."]
+script = ExtResource( 21 )
+path_to_pipegame = NodePath("../Architecture/FactoryRoomInterior/PipeGame")
+
+[node name="InactiveMusic" type="AudioStreamPlayer" parent="FactoryMusicHandler"]
+stream = ExtResource( 22 )
+
+[node name="ActiveMusic" type="AudioStreamPlayer" parent="FactoryMusicHandler"]
+stream = ExtResource( 23 )
+
+[node name="WorkArea" type="Area" parent="." groups=[
+"Workwork",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -47 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WorkArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2 )
+shape = SubResource( 18 )
+
+[node name="BackdoorKey" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 61.4252, 0.526477, -41.4731 )
+key_id = 7
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 19 )
+
+[node name="Light" type="Spatial" parent="."]
+
+[node name="SpotLight" parent="Light" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -5 )
+
+[node name="SpotLight3" parent="Light" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -26 )
+
+[node name="SpotLight6" parent="Light" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8823, 5, -70.7544 )
+
+[node name="SpotLight8" parent="Light" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1177, 5, -70.7544 )
+
+[node name="SpotLight9" parent="Light" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.1177, 5, -68.7544 )
+
+[node name="SpotLight12" parent="Light" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9017, 5, -27.7544 )
+
+[node name="SpotLight5" parent="Light" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -51 )
+
+[node name="SpotLight" parent="Light/SpotLight5" index="1"]
+spot_range = 54.5
+spot_angle = 76.9
+
+[editable path="Architecture/EntryHall/DoubleDoorWall"]
+
+[editable path="Architecture/FactoryRoomWalls/DoubleDoorWall2"]
+
+[editable path="Architecture/FactoryRoomWalls/BackWallTrue/Door"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever2"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever12"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever13"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever14"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever3"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever4"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever5"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever6"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever7"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever8"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever9"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever15"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever16"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever17"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever10"]
+
+[editable path="Architecture/FactoryRoomInterior/FakeStuff/BigFake/FakeLever11"]
+
+[editable path="Architecture/FactoryRoomInterior/KeyThing/PlayerHomeKey"]
+
+[editable path="Architecture/FactoryRoomInterior/KeyThing/PlayerHomeKey/Sparkle"]
+
+[editable path="Architecture/FactoryRoomInterior/KeyThing/Pipe"]
+
+[editable path="Light/SpotLight5"]

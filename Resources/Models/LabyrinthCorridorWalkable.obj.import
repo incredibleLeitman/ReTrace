@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/LabyrinthCorridorWalkable.obj-3c2f1f74b653b9e457e6513fd3db92e0.mesh"
+
+[deps]
+
+files=[ "res://.import/LabyrinthCorridorWalkable.obj-3c2f1f74b653b9e457e6513fd3db92e0.mesh" ]
+
+source_file="res://Resources/Models/LabyrinthCorridorWalkable.obj"
+dest_files=[ "res://.import/LabyrinthCorridorWalkable.obj-3c2f1f74b653b9e457e6513fd3db92e0.mesh", "res://.import/LabyrinthCorridorWalkable.obj-3c2f1f74b653b9e457e6513fd3db92e0.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

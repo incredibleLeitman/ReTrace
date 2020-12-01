@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/meldewesen-eat-food.wav-8b8266fa43381a11c15555fa2f7a200a.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/meldewesen-eat-food.wav"
+dest_files=[ "res://.import/meldewesen-eat-food.wav-8b8266fa43381a11c15555fa2f7a200a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

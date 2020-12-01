@@ -1,0 +1,466 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Level/Interactables/FactoryMachines/PipeGame.gd" type="Script" id=1]
+[ext_resource path="res://Level/Interactables/Pipes/InputBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Level/Interactables/Pipes/StraightPipe.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Level/Interactables/Pipes/ForkPipe.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Level/Interactables/Pipes/EckiPipe.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Level/Interactables/Pipes/StraightForkPipe.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Level/Interactables/Lever/Lever.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.4, 0.4, 0.4, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+
+[node name="PipeGame" type="StaticBody"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource( 1 )
+col1 = Color( 1, 1, 1, 1 )
+col2 = Color( 0.101961, 0.101961, 0.101961, 1 )
+col3 = Color( 0, 0.792157, 0, 1 )
+col4 = Color( 0, 0, 1, 1 )
+col5 = Color( 1, 0, 0, 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 2.3, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.3, 0.85, 0 )
+shape = SubResource( 1 )
+
+[node name="Table" type="MeshInstance" parent="."]
+transform = Transform( 2.3, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.3, 0.85, 0 )
+layers = 3
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="IO Boxes" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0 )
+
+[node name="InputBox1" parent="IO Boxes" instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.75, -0.8 )
+
+[node name="InputBox2" parent="IO Boxes" instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.75, -0.4 )
+
+[node name="InputBox3" parent="IO Boxes" instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.75, 0 )
+
+[node name="InputBox4" parent="IO Boxes" instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.75, 0.4 )
+content_color = Color( 0, 0.0627451, 1, 1 )
+
+[node name="InputBox5" parent="IO Boxes" instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.75, 0.8 )
+content_color = Color( 1, 0, 0, 1 )
+
+[node name="Output1" type="MeshInstance" parent="IO Boxes"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.85, 0.75, -0.8 )
+layers = 3
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="ExitCast" type="RayCast" parent="IO Boxes/Output1"]
+transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, -1.00011, 0.341612, -0.167214 )
+enabled = true
+cast_to = Vector3( 0, -0.5, 0 )
+collision_mask = 3
+
+[node name="Output2" type="MeshInstance" parent="IO Boxes"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.85, 0.75, 0 )
+layers = 3
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="ExitCast" type="RayCast" parent="IO Boxes/Output2"]
+transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, -1.00011, 0.341612, 0.0168505 )
+enabled = true
+cast_to = Vector3( 0, -0.5, 0 )
+collision_mask = 3
+
+[node name="Output3" type="MeshInstance" parent="IO Boxes"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.85, 0.75, 0.8 )
+layers = 3
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="ExitCast" type="RayCast" parent="IO Boxes/Output3"]
+transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, -0.922591, 0.341612, 0.145537 )
+enabled = true
+cast_to = Vector3( 0, -0.5, 0 )
+collision_mask = 3
+
+[node name="Pipes" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+
+[node name="Pipe1_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -2.35, 1.25, -0.8 )
+mesh_path = NodePath("../Pipe1_1/Mesh")
+color_cast_left = NodePath("../Pipe1_1/ColorCast")
+
+[node name="Pipe2_1" parent="Pipes" instance=ExtResource( 3 )]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -1.95, 1.25, -0.8 )
+mesh_path = NodePath("../Pipe2_1/Mesh")
+color_cast_left = NodePath("../Pipe2_1/ColorCast")
+
+[node name="Pipe3_1" parent="Pipes" instance=ExtResource( 3 )]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -1.55, 1.25, -0.8 )
+mesh_path = NodePath("../Pipe3_1/Mesh")
+color_cast_left = NodePath("../Pipe3_1/ColorCast")
+
+[node name="Pipe4_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -2.35, 1.25, -0.4 )
+mesh_path = NodePath("../Pipe4_1/Mesh")
+color_cast_left = NodePath("../Pipe4_1/ColorCast")
+
+[node name="Pipe5_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -2.35, 1.25, 0 )
+mesh_path = NodePath("../Pipe5_1/Mesh")
+color_cast_left = NodePath("../Pipe5_1/ColorCast")
+
+[node name="Pipe6_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -1.95, 1.25, 0 )
+mesh_path = NodePath("../Pipe6_1/Mesh")
+color_cast_left = NodePath("../Pipe6_1/ColorCast")
+
+[node name="Fork1_1" parent="Pipes" instance=ExtResource( 4 )]
+transform = Transform( 1.91069e-015, 4.37114e-008, 1, 1, -4.37114e-008, 0, 4.37114e-008, 1, -4.37114e-008, -1.55, 1.25, 0 )
+x_rot = 90
+
+[node name="Pipe7_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, -1.55, 1.65, 0 )
+mesh_path = NodePath("../Pipe7_1/Mesh")
+color_cast_left = NodePath("../Pipe7_1/ColorCast")
+
+[node name="Pipe8_1" parent="Pipes" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, -1.55, 1.25, 0.4 )
+mesh_path = NodePath("../Pipe8_1/Mesh")
+color_cast_left = NodePath("../Pipe8_1/ColorCast")
+
+[node name="Pipe9_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -1.15, 1.25, 0.4 )
+mesh_path = NodePath("../Pipe9_1/Mesh")
+color_cast_left = NodePath("../Pipe9_1/ColorCast")
+
+[node name="Pipe10_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -2.35, 1.25, 0.4 )
+mesh_path = NodePath("../Pipe10_1/Mesh")
+color_cast_left = NodePath("../Pipe10_1/ColorCast")
+
+[node name="Fork2_1" parent="Pipes" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -1.95, 1.25, 0.4 )
+x_rot = -90
+
+[node name="Pipe11_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -2.35, 1.25, 0.8 )
+mesh_path = NodePath("../Pipe11_1/Mesh")
+color_cast_left = NodePath("../Pipe11_1/ColorCast")
+
+[node name="Pipe12_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( 1.91069e-015, -4.37114e-008, 1, -1, -4.37114e-008, 0, 4.37114e-008, -1, -4.37114e-008, -1.95, 1.25, 0.8 )
+mesh_path = NodePath("../Pipe12_1/Mesh")
+color_cast_left = NodePath("../Pipe12_1/ColorCastLeft")
+
+[node name="Fork3_1" parent="Pipes" instance=ExtResource( 4 )]
+transform = Transform( 1.91069e-015, 4.37114e-008, 1, 1, -4.37114e-008, 0, 4.37114e-008, 1, -4.37114e-008, -1.55, 1.25, 0.8 )
+x_rot = 90
+
+[node name="Pipe13_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, -1.55, 1.25, 1.2 )
+mesh_path = NodePath("../Pipe13_1/Mesh")
+color_cast_left = NodePath("../Pipe13_1/ColorCast")
+
+[node name="Pipe14_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( 1.91069e-015, -4.37114e-008, 1, -1, -4.37114e-008, 0, 4.37114e-008, -1, -4.37114e-008, -1.15, 1.25, 1.2 )
+mesh_path = NodePath("../Pipe14_1/Mesh")
+color_cast_left = NodePath("../Pipe14_1/ColorCast")
+
+[node name="Pipe15_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( 4.37114e-008, 1, -8.74228e-008, 1, -4.37114e-008, 0, -3.82137e-015, -8.74228e-008, -1, -1.15, 1.25, 0.8 )
+mesh_path = NodePath("../Pipe15_1/Mesh")
+color_cast_left = NodePath("../Pipe15_1/ColorCast")
+
+[node name="Fork4_1" parent="Pipes" instance=ExtResource( 4 )]
+transform = Transform( 1.91069e-015, -4.37114e-008, 1, -1, -4.37114e-008, 0, 4.37114e-008, -1, -4.37114e-008, -0.75, 1.25, 0.8 )
+x_rot = -90
+
+[node name="Pipe16_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-008, 1, 4.37114e-008, 0, -4.37114e-008, 1, 1, 4.37114e-008, 1.91069e-015, -0.75, 1.65, 0.8 )
+mesh_path = NodePath("../Pipe16_1/Mesh")
+color_cast_left = NodePath("../Pipe16_1/ColorCast")
+
+[node name="Pipe17_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( 4.37114e-008, -3.82137e-015, 1, -8.74228e-008, -1, 0, 1, -8.74228e-008, -4.37114e-008, -0.35, 1.65, 0.8 )
+mesh_path = NodePath("../Pipe17_1/Mesh")
+color_cast_left = NodePath("../Pipe17_1/ColorCast")
+
+[node name="Pipe18_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-008, -1, -4.37114e-008, 0, -4.37114e-008, 1, -1, 4.37114e-008, 1.91069e-015, -1.55, 1.65, 0.8 )
+mesh_path = NodePath("../Pipe18_1/Mesh")
+color_cast_left = NodePath("../Pipe18_1/ColorCast")
+
+[node name="Pipe19_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( 1.91069e-015, 4.37114e-008, -1, 1, -4.37114e-008, 0, -4.37114e-008, -1, -4.37114e-008, -1.95, 1.65, 0.8 )
+mesh_path = NodePath("../Pipe19_1/Mesh")
+color_cast_left = NodePath("../Pipe19_1/ColorCast")
+
+[node name="Pipe20_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( 1, -8.74228e-008, -8.74228e-008, -8.74228e-008, -1, 0, -8.74228e-008, 7.64274e-015, -1, -1.95, 1.65, 0.4 )
+mesh_path = NodePath("../Pipe20_1/Mesh")
+color_cast_left = NodePath("../Pipe20_1/ColorCastLeft")
+
+[node name="Pipe21_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -1.95, 1.65, 0 )
+mesh_path = NodePath("../Pipe21_1/Mesh")
+color_cast_left = NodePath("../Pipe21_1/ColorCast")
+
+[node name="Fork5_1" parent="Pipes" instance=ExtResource( 4 )]
+transform = Transform( 1, 8.74228e-008, -8.74228e-008, 8.74228e-008, -1, 0, -8.74228e-008, -7.64274e-015, -1, -1.95, 1.65, -0.4 )
+mesh_path = NodePath("../Fork5_1/Mesh")
+color_cast_left = NodePath("../Fork5_1/ColorCast")
+z_rot = -90
+
+[node name="Pipe22_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -1.95, 1.25, -0.4 )
+mesh_path = NodePath("../Pipe22_1/Mesh")
+color_cast_left = NodePath("../Pipe22_1/ColorCastLeft")
+
+[node name="Pipe23_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -1.55, 1.25, -0.4 )
+mesh_path = NodePath("../Pipe23_1/Mesh")
+color_cast_left = NodePath("../Pipe23_1/ColorCast")
+
+[node name="Fork6_1" parent="Pipes" instance=ExtResource( 4 )]
+transform = Transform( 1.91069e-015, -4.37114e-008, 1, -1, -4.37114e-008, 0, 4.37114e-008, -1, -4.37114e-008, -1.15, 1.25, -0.4 )
+x_rot = 180
+
+[node name="Pipe24_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( 1.91069e-015, 4.37114e-008, 1, 1, -4.37114e-008, 0, 4.37114e-008, 1, -4.37114e-008, -1.15, 1.25, -0.8 )
+mesh_path = NodePath("../Pipe24_1/Mesh")
+color_cast_left = NodePath("../Pipe24_1/ColorCastLeft")
+
+[node name="Pipe25_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -0.75, 1.25, -0.8 )
+mesh_path = NodePath("../Pipe25_1/Mesh")
+color_cast_left = NodePath("../Pipe25_1/ColorCast")
+
+[node name="Fork7_1" parent="Pipes" instance=ExtResource( 4 )]
+transform = Transform( 1.91069e-015, 4.37114e-008, 1, 1, -4.37114e-008, 0, 4.37114e-008, 1, -4.37114e-008, -0.35, 1.25, -0.8 )
+mesh_path = NodePath("../Fork7_1/Mesh")
+color_cast_left = NodePath("../Fork7_1/ColorCast")
+x_rot = 90
+
+[node name="Pipe26_1" parent="Pipes" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( -1, 8.74228e-008, 3.82137e-015, 0, -4.37114e-008, 1, 8.74228e-008, 1, 4.37114e-008, -0.35, 1.65, -0.8 )
+mesh_path = NodePath("../Pipe26_1/Mesh")
+color_cast_left = NodePath("../Pipe26_1/ColorCast")
+
+[node name="Pipe27_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.65, -0.4 )
+mesh_path = NodePath("../Pipe27_1/Mesh")
+color_cast_left = NodePath("../Pipe27_1/ColorCast")
+
+[node name="Pipe28_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( -1, 8.74228e-008, 0, -8.74228e-008, -1, 0, 0, 0, 1, -0.35, 1.65, 0 )
+mesh_path = NodePath("../Pipe28_1/Mesh")
+color_cast_left = NodePath("../Pipe28_1/ColorCast")
+
+[node name="Pipe29_1" parent="Pipes" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, -0.35, 1.25, -0.4 )
+mesh_path = NodePath("../Pipe29_1/Mesh")
+color_cast_left = NodePath("../Pipe29_1/ColorCast")
+
+[node name="Fork8_1" parent="Pipes" instance=ExtResource( 4 )]
+transform = Transform( 1.91069e-015, -4.37114e-008, 1, -1, -4.37114e-008, 0, 4.37114e-008, -1, -4.37114e-008, 0.05, 1.25, -0.4 )
+x_rot = -90
+
+[node name="Pipe30_1" parent="Pipes" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( 4.37114e-008, 1, 8.74228e-008, 1, -4.37114e-008, 0, 3.82137e-015, 8.74228e-008, -1, 0.05, 1.25, -0.8 )
+mesh_path = NodePath("../Pipe30_1/Mesh")
+color_cast_left = NodePath("../Pipe30_1/ColorCast")
+
+[node name="Pipe31_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( -1, 8.74228e-008, 3.82137e-015, 0, -4.37114e-008, 1, 8.74228e-008, 1, 4.37114e-008, 0.05, 1.65, -0.4 )
+mesh_path = NodePath("../Pipe31_1/Mesh")
+color_cast_left = NodePath("../Pipe31_1/ColorCast")
+
+[node name="Pipe32_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 1.65, 0 )
+mesh_path = NodePath("../Pipe32_1/Mesh")
+color_cast_left = NodePath("../Pipe32_1/ColorCast")
+
+[node name="Pipe33_1" parent="Pipes" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, -1.15, 1.25, 0 )
+mesh_path = NodePath("../Pipe33_1/Mesh")
+color_cast_left = NodePath("../Pipe33_1/ColorCast")
+
+[node name="Pipe34_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -0.75, 1.25, 0 )
+mesh_path = NodePath("../Pipe34_1/Mesh")
+color_cast_left = NodePath("../Pipe34_1/ColorCast")
+
+[node name="Pipe35_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -0.35, 1.25, 0 )
+mesh_path = NodePath("../Pipe35_1/Mesh")
+color_cast_left = NodePath("../Pipe35_1/ColorCastLeft")
+
+[node name="Pipe36_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( 4.37114e-008, -1, -8.74228e-008, -1, -4.37114e-008, 0, -3.82137e-015, 8.74228e-008, -1, -1.55, 1.65, -0.4 )
+mesh_path = NodePath("../Pipe36_1/Mesh")
+color_cast_left = NodePath("../Pipe36_1/ColorCastLeft")
+
+[node name="Pipe37_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( 4.37114e-008, 1, -8.74228e-008, 1, -4.37114e-008, 0, -3.82137e-015, -8.74228e-008, -1, -1.55, 1.65, -0.8 )
+mesh_path = NodePath("../Pipe37_1/Mesh")
+color_cast_left = NodePath("../Pipe37_1/ColorCast")
+
+[node name="Pipe38_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -1.15, 1.65, -0.8 )
+mesh_path = NodePath("../Pipe38_1/Mesh")
+color_cast_left = NodePath("../Pipe38_1/ColorCast")
+
+[node name="Fork9_1" parent="Pipes" instance=ExtResource( 4 )]
+transform = Transform( 1.91069e-015, 4.37114e-008, 1, 1, -4.37114e-008, 0, 4.37114e-008, 1, -4.37114e-008, -0.75, 1.65, -0.8 )
+x_rot = 180
+
+[node name="Pipe39_1" parent="Pipes" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( 4.37114e-008, 1, -8.74228e-008, 1, -4.37114e-008, 0, -3.82137e-015, -8.74228e-008, -1, -0.75, 1.65, -1.2 )
+mesh_path = NodePath("../Pipe39_1/Mesh")
+color_cast_left = NodePath("../Pipe39_1/ColorCast")
+
+[node name="Pipe40_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -0.35, 1.65, -1.2 )
+mesh_path = NodePath("../Pipe40_1/Mesh")
+color_cast_left = NodePath("../Pipe40_1/ColorCast")
+
+[node name="Pipe41_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0.05, 1.65, -1.2 )
+mesh_path = NodePath("../Pipe41_1/Mesh")
+color_cast_left = NodePath("../Pipe41_1/ColorCast")
+
+[node name="Pipe42_1" parent="Pipes" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( 1.91069e-015, 4.37114e-008, 1, 1, -4.37114e-008, 0, 4.37114e-008, 1, -4.37114e-008, 0.45, 1.65, -1.2 )
+mesh_path = NodePath("../Pipe42_1/Mesh")
+color_cast_left = NodePath("../Pipe42_1/ColorCast")
+
+[node name="Pipe43_1" parent="Pipes" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( -1, 8.74228e-008, 0, -8.74228e-008, -1, 0, 0, 0, 1, 0.45, 1.65, -0.8 )
+mesh_path = NodePath("../Pipe43_1/Mesh")
+color_cast_left = NodePath("../Pipe43_1/ColorCast")
+
+[node name="Pipe44_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0.45, 1.25, -0.8 )
+mesh_path = NodePath("../Pipe44_1/Mesh")
+color_cast_left = NodePath("../Pipe44_1/ColorCastLeft")
+
+[node name="Pipe45_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.65, -0.4 )
+mesh_path = NodePath("../Pipe45_1/Mesh")
+color_cast_left = NodePath("../Pipe45_1/ColorCast")
+
+[node name="Pipe46_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.65, 0 )
+mesh_path = NodePath("../Pipe46_1/Mesh")
+color_cast_left = NodePath("../Pipe46_1/ColorCast")
+
+[node name="Pipe47_1" parent="Pipes" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, -0.75, 1.65, 0.4 )
+mesh_path = NodePath("../Pipe47_1/Mesh")
+color_cast_left = NodePath("../Pipe47_1/ColorCast")
+
+[node name="Pipe48_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -0.35, 1.65, 0.4 )
+mesh_path = NodePath("../Pipe48_1/Mesh")
+color_cast_left = NodePath("../Pipe48_1/ColorCast")
+
+[node name="Pipe49_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( 1.91069e-015, 4.37114e-008, 1, 1, -4.37114e-008, 0, 4.37114e-008, 1, -4.37114e-008, -0.75, 1.25, 0.4 )
+mesh_path = NodePath("../Pipe49_1/Mesh")
+color_cast_left = NodePath("../Pipe49_1/ColorCastLeft")
+
+[node name="Pipe50_1" parent="Pipes" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -0.35, 1.25, 0.4 )
+mesh_path = NodePath("../Pipe50_1/Mesh")
+color_cast_left = NodePath("../Pipe50_1/ColorCast")
+
+[node name="Pipe51_1" parent="Pipes" instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( 1.91069e-015, -4.37114e-008, 1, -1, -4.37114e-008, 0, 4.37114e-008, -1, -4.37114e-008, 0.05, 1.25, 0.4 )
+mesh_path = NodePath("../Pipe51_1/Mesh")
+color_cast_left = NodePath("../Pipe51_1/ColorCast")
+
+[node name="Pipe52_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( 1.91069e-015, 4.37114e-008, 1, 1, -4.37114e-008, 0, 4.37114e-008, 1, -4.37114e-008, 0.05, 1.25, 0 )
+mesh_path = NodePath("../Pipe52_1/Mesh")
+color_cast_left = NodePath("../Pipe52_1/ColorCastLeft")
+
+[node name="Pipe53_1" parent="Pipes" instance=ExtResource( 3 )]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0.45, 1.25, 0 )
+mesh_path = NodePath("../Pipe53_1/Mesh")
+color_cast_left = NodePath("../Pipe53_1/ColorCast")
+
+[node name="Pipe54_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0, 1, 0.05, 1.65, 0.4 )
+mesh_path = NodePath("../Pipe54_1/Mesh")
+color_cast_left = NodePath("../Pipe54_1/ColorCastLeft")
+
+[node name="Pipe55_1" parent="Pipes" instance=ExtResource( 6 )]
+transform = Transform( 1.91069e-015, -4.37114e-008, 1, -1, -4.37114e-008, 0, 4.37114e-008, -1, -4.37114e-008, 0.05, 1.65, 0.8 )
+mesh_path = NodePath("../Pipe55_1/Mesh")
+color_cast_left = NodePath("../Pipe55_1/ColorCastLeft")
+
+[node name="Pipe56_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( 4.37114e-008, 3.82137e-015, 1, 8.74228e-008, -1, 0, 1, 8.74228e-008, -4.37114e-008, 0.45, 1.65, 0.8 )
+mesh_path = NodePath("../Pipe56_1/Mesh")
+color_cast_left = NodePath("../Pipe56_1/ColorCast")
+
+[node name="Pipe57_1" parent="Pipes" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-008, 1, -4.37114e-008, 0, -4.37114e-008, -1, -1, -4.37114e-008, 1.91069e-015, 0.45, 1.25, 0.8 )
+mesh_path = NodePath("../Pipe57_1/Mesh")
+color_cast_left = NodePath("../Pipe57_1/ColorCast")
+
+[node name="Lever" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 2.35, 1.1, 0 )
+is_machine_start = true
+
+[node name="Lights" type="Spatial" parent="."]
+
+[node name="Light1" type="MeshInstance" parent="Lights"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 2.2, 1.1, -0.5 )
+layers = 3
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Light2" type="MeshInstance" parent="Lights"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 2.35, 1.1, -0.5 )
+layers = 3
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Light3" type="MeshInstance" parent="Lights"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 2.5, 1.1, -0.5 )
+layers = 3
+mesh = SubResource( 5 )
+material/0 = null

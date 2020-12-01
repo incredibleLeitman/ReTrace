@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/labyrinth.wav-d24c5bfa36f10e3712debbaef67c2185.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/LabyrinthMusic/labyrinth.wav"
+dest_files=[ "res://.import/labyrinth.wav-d24c5bfa36f10e3712debbaef67c2185.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

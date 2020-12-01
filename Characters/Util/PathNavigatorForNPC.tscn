@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Util/PathNavigatorForNPC.gd" type="Script" id=1]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -7.92509, 2.86102e-05, -6.86376, 0, 0, 0, 0, 0, 0, 0.703341, 0.398803, 1.99739, 0, 0, 0, 0, 0, 0, 9.39952, 0.263628, 7.15156, 0, 0, 0, 0, 0, 0, -4.38803, 1.73835, 6.52798 ),
+"tilts": PoolRealArray( 0, 0, 0, 0 )
+}
+
+[node name="PathNavigatorForNPC" type="Path" groups=[
+"Navigator",
+]]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+body_nodepath = NodePath("../KinematicBody")
